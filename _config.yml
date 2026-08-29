@@ -12,6 +12,12 @@
 # https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/#yaml
 # https://learnxinyminutes.com/docs/yaml/
 #
+
+# Some configuration settings cannot be changed for GitHub Pages sites.
+#
+#   https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/about-github-pages-and-jekyll#configuring-jekyll-in-your-github-pages-site
+#
+
 # Site settings
 # These are used to personalize your new site. If you look in the HTML files,
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
@@ -19,26 +25,30 @@
 # in the templates via {{ site.myvariable }}.
 github: [ metadata ]
 
-title: Personal blog
-description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
-# baseurl: "" # the subpath of your site, e.g. /blog
-# url: "" # the base hostname & protocol for your site, e.g. http://example.com
-# twitter_username: jekyllrb
-# github_username: jekyll
-# email: your-email@example.com
+locale: fr
+# title_separator         :     #default [" | "]
+# subtitle                : "Chulapa Jekyll Theme starter pack"    #default [your-repository-tagline]
+# description             : "Chulapa Jekyll Theme starter pack" #default [your-repository-tagline]
+# url                     :     #See baseurl - On Github Pages you may leave it blank - If you use CNAME use your domain
+# baseurl                 :     #On Github Pages you may leave it blank. Have a look to: https://byparker.com/blog/2014/clearing-up-confusion-around-baseurl/
+# words_per_minute        :     #default[200]
+# timezone                :     #"Europe/Madrid ,see https://jekyllrb.com/docs/configuration/options/ and https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
 # Build settings
 # theme: minima
 remote_theme: "dieghernan/chulapa"
+chulapa-skin:
+  skin: Deeply
 
+# Some plugins are installed by default for GitHub Pages sites.
+#
+#   https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/about-github-pages-and-jekyll#plugins
+#
 plugins:
 - jekyll-feed
 - jekyll-github-metadata
-- jekyll-paginate
 - jekyll-include-cache
 - jekyll-sitemap
-- jekyll-remote-theme
 - jekyll-remote-theme
 
 # Exclude from processing.
@@ -49,14 +59,48 @@ plugins:
 # Excluded items can be processed by explicitly listing the directories or
 # their entries' file path in the `include:` list.
 #
-# exclude:
-#   - .sass-cache/
-#   - .jekyll-cache/
-#   - gemfiles/
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules/
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
+exclude:
+- .sass-cache/
+- .jekyll-cache/
+- gemfiles/
+- Gemfile
+- Gemfile.lock
+- node_modules/
+- LICENSE
+- README.md
+- vendor/bundle/
+- vendor/cache/
+- vendor/gems/
+- vendor/ruby/
+
+# HTML Compression
+# - https://jch.penibelst.de/
+compress_html:
+  clippings: all
+  blanklines: true
+
+title: Personal blog
+description: >- # this means to ignore newlines until "baseurl:"
+  Rahenda's contribution spans from tech industry in semiconductor and telecommunications to associative world. He is always eager to make impact. His motto is something.
+author:
+  name: Rahenda
+  avatar: https://github.com/devdhh.png
+  location: Paris, FR
+  links:
+  - url: https://github.com/rahendatri
+    icon: "fab fa-github"
+    label: "View on Github"
+  - url: fake@email
+    icon: far fa-envelope
+    label: "My personal email"
+
+# Defaults https://jekyllrb.com/docs/configuration/front-matter-defaults/
+defaults:
+- scope:
+    path: ""
+  values:
+    layout: "default"
+    header_type: "base"
+    include_on_search: false
+    cloudtag_url: "/tags" #This is where the link on tags would redirect
+    cloudcategory_url: "/categories" #This is where the link on categories would redirect
