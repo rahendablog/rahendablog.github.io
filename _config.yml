@@ -28,9 +28,11 @@ description: >- # this means to ignore newlines until "baseurl:"
 # email: your-email@example.com
 
 # Build settings
-theme: minima
+# theme: minima
+remote_theme: dieghernan/chulapa
 plugins:
 - jekyll-feed
+- jekyll-remote-theme
 
 # Exclude from processing.
 # The following items will not be processed, by default.
