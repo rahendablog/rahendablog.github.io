@@ -38,7 +38,7 @@ locale: fr
 # theme: minima
 remote_theme: "dieghernan/chulapa"
 chulapa-skin:
-  skin: Deeply
+  skin: deeply
 
 # Some plugins are installed by default for GitHub Pages sites.
 #
@@ -50,6 +50,7 @@ plugins:
 - jekyll-include-cache
 - jekyll-sitemap
 - jekyll-remote-theme
+- jekyll-paginate
 
 # Exclude from processing.
 # The following items will not be processed, by default.
@@ -80,6 +81,7 @@ compress_html:
   blanklines: true
 
 title: Personal blog
+subtitle: Rahenda's personal blog
 description: >- # this means to ignore newlines until "baseurl:"
   Rahenda's contribution spans from tech industry in semiconductor and telecommunications to associative world. He is always eager to make impact. His motto is something.
 author:
@@ -104,3 +106,22 @@ defaults:
     include_on_search: false
     cloudtag_url: "/tags" #This is where the link on tags would redirect
     cloudcategory_url: "/categories" #This is where the link on categories would redirect
+- scope:
+    path: ""
+    type: "posts"
+  values:
+    header_type: "post"
+    include_on_search: true
+    include_on_feed: true
+    show_date: true
+    show_bottomnavs: true
+    show_sociallinks: true
+    show_comments: true
+    show_tags: true
+    show_categories: true
+    show_author: true
+
+# Navbar https://dieghernan.github.io/chulapa/docs/02-config
+navbar:
+  brand:
+    title: Rahenda
