@@ -86,13 +86,13 @@ description: >- # this means to ignore newlines until "baseurl:"
   Rahenda's contribution spans from tech industry in semiconductor and telecommunications to associative world. He is always eager to make impact. His motto is something.
 author:
   name: Rahenda
-  avatar: https://github.com/devdhh.png
+  avatar: https://github.com/rahendatri.png
   location: Paris, FR
   links:
   - url: https://github.com/rahendatri
     icon: "fab fa-github"
     label: "View on Github"
-  - url: fake@email
+  - url: test@mail.mail
     icon: far fa-envelope
     label: "My personal email"
 
