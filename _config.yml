@@ -123,5 +123,17 @@ defaults:
 
 # Navbar https://dieghernan.github.io/chulapa/docs/02-config
 navbar:
+  style: fab
   brand:
-    title: Rahenda
+    title: Home
+    # img: "./assets/img/site/brand-clear.png"
+    url: /
+  nav:
+  - title: About me #Label
+    url: /about #url
+  - title: Two-level link #Label
+    child:
+    - title: Second level first item
+      url: /url2-1
+    - title: Second level second item
+      url: /url2-2
