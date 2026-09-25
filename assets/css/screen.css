@@ -838,13 +838,22 @@ body.nav-opened .nav {
 .cover-credit {
     position: absolute;
     z-index: 100;
-    right: 20px;
-    bottom: 15px;
+    right: 8px;
+    bottom: 6px;
     margin: 0;
-    font-size: 1.2rem;
+    font-size: 1rem;
     line-height: 1.4;
-    color: rgba(255,255,255,0.7);
-    text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+    color: rgba(255,255,255,0.45);
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+
+.cover-credit a {
+    color: inherit;
+    text-decoration: underline;
+}
+
+.cover-credit a:hover {
+    color: rgba(255,255,255,0.9);
 }
 
 /* Hide when there's no cover image or on page2+ */
@@ -973,7 +982,8 @@ body.nav-opened .nav {
     font-weight: 400;
     font-family: "Merriweather", serif;
     letter-spacing: 0.01rem;
-    color: rgba(255,255,255,0.8);
+    color: #fff;
+    text-shadow: 0 1px 6px rgba(0,0,0,0.6);
 }
 
 .no-cover.main-header {
@@ -988,6 +998,42 @@ body.nav-opened .nav {
 
 .no-cover .page-description {
     color: rgba(0,0,0,0.5);
+    text-shadow: none;
+}
+
+/* Call-to-action button under the home page subtitle */
+.header-button {
+    display: inline-block;
+    margin-top: 3rem;
+    padding: 0 22px;
+    height: 42px;
+    line-height: 40px;
+    font-size: 1.3rem;
+    letter-spacing: 0.05rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    white-space: nowrap;
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.6);
+    border-radius: 3px;
+    transition: all 0.5s ease;
+}
+.header-button:hover,
+.header-button:focus {
+    color: #222;
+    background: #fff;
+    border-color: #fff;
+    text-decoration: none;
+}
+.no-cover .header-button {
+    color: #9EABB3;
+    border-color: #BFC8CD;
+}
+.no-cover .header-button:hover,
+.no-cover .header-button:focus {
+    color: #555;
+    background: transparent;
+    border-color: #555;
 }
 
 /* Add subtle load-in animation for content on the home page */
@@ -1002,6 +1048,11 @@ body.nav-opened .nav {
     animation: fade-in-down 0.9s both;
     -webkit-animation-delay: 0.1s;
     animation-delay: 0.1s;
+}
+
+.home-template .header-button {
+    -webkit-animation: fade-in-down 1.2s;
+    animation: fade-in-down 1.2s both;
 }
 
 /* Every post, on every page, gets this style on its <article> tag */

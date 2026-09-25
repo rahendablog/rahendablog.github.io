@@ -29,7 +29,7 @@ github:
 locale: fr
 title_separator:     #default [" | "]
 url:     #See baseurl - On Github Pages you may leave it blank - If you use CNAME use your domain
-baseurl:     #On Github Pages you may leave it blank. Have a look to: https://byparker.com/blog/2014/clearing-up-confusion-around-baseurl/
+baseurl: "/"     #Must end with "/" (theme builds links as {{ site.baseurl }}path). On Github Pages user sites use "/". Have a look to: https://byparker.com/blog/2014/clearing-up-confusion-around-baseurl/
 words_per_minute:     #default[200]
 timezone:     #"Europe/Madrid ,see https://jekyllrb.com/docs/configuration/options/ and https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 short_url: 'rahendablog.github.io/'
@@ -38,7 +38,7 @@ title: &site_title "Rahenda's blog"
 name: *site_title
 subtitle: Rahenda's personal blog
 description: >- # this means to ignore newlines until "baseurl:"
-  A business-driven engineer sharing thoughts about technology from his perspective.
+  A business-driven product manager with engineering background
 author:
   name: Rahenda
   avatar: https://github.com/rahendatri.png
