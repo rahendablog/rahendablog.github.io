@@ -67,6 +67,7 @@ plugins:
 - jekyll-paginate
 # - jekyll-remote-theme
 
+# Pagination (jekyll-paginate)
 paginate: 5
 
 # Exclude from processing.
