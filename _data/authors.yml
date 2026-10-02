@@ -1,8 +1,8 @@
 rahenda:
   username: rahenda
   name: Rahenda ROSMEDI
-  location: Paris, FR
+  location: Rennes, FR
   url_full: http://rahendarosmedi.com
   url: http://rahendarosmedi.com
   bio: {{ site.description }}
-  assets: assets/images/casper.png
+  assets: assets/images/author.png
