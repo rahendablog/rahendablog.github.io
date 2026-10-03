@@ -9,29 +9,3 @@
   // open()/close() API — https://help.landbot.io — can be called from anywhere on the page.
   window.myLandbot = myLandbot;
 </script>
-
-<!--
-    Landbot renders its launcher as plain DOM (no shadow root), so its position is adjustable
-    from regular page CSS via its own classes. Nudged off the bare corner and kept clear of the
-    phone's home-indicator / gesture area via safe-area-inset-bottom, instead of sitting flush
-    against the edge.
-
-    The launcher bubble doubles as the close control — it morphs into an X and stays clickable
-    while the chat window is open. If the window's own stacking context sits above it, the X
-    becomes unreachable even though it's technically still there, which is what "no close
-    button" usually turns out to be. Forcing its z-index above everything else on the page
-    keeps it clickable regardless of where the window renders.
--->
-<style>
-    .LivechatLauncher {
-        right: 20px !important;
-        bottom: calc(20px + env(safe-area-inset-bottom, 0px)) !important;
-        z-index: 2147483000 !important;
-    }
-    @media only screen and (max-device-width: 767.9px) {
-        .LivechatLauncher {
-            right: 14px !important;
-            bottom: calc(14px + env(safe-area-inset-bottom, 0px)) !important;
-        }
-    }
-</style>
