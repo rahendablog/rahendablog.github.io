@@ -4,5 +4,5 @@ rahenda:
   location: Rennes, FR
   url_full: http://rahendarosmedi.com
   url: http://rahendarosmedi.com
-  bio: {{ site.description }}
+  bio: "{ }"
   assets: assets/images/author.png
