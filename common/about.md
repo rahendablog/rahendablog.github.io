@@ -8,7 +8,7 @@ current: about
 permalink: about.html
 ---
 
-Hi !
+Hi ! 
 
 I am a product manager with track record spanning engineering, product, management, and sales.
 

@@ -1,0 +1,14 @@
+---
+layout: none
+---
+
+{{ site.posts | inspect }}
+
+
+
+<h1>--------</h1>
+
+{% for post in site.posts %}
+    <h1>----POST----</h1>
+    {{ post }}
+{% endfor %}

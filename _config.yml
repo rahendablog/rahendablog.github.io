@@ -70,6 +70,10 @@ plugins:
 # Pagination (jekyll-paginate)
 paginate: 5
 
+# Include from processing (folders with "_" prefix are ignored, but some are included by default).
+# include:
+# - _common/
+
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to
