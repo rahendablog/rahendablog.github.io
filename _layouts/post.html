@@ -46,6 +46,14 @@ class: 'post-template'
                     {% endif %}
                 {% endfor %}
                 {% endif %}
+                {% capture reading_minutes %}{{ content | reading_time }}{% endcapture %}
+                <span class="post-reading-time" title="Estimated reading time">
+                    <svg class="post-reading-time-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                        <circle cx="12" cy="12" r="9"></circle>
+                        <polyline points="12 7 12 12 15.5 14"></polyline>
+                    </svg>
+                    {{ reading_minutes }} minute{% if reading_minutes != '1' %}s{% endif %} read
+                </span>
             </section>
         </header>
 

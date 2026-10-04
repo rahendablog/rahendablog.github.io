@@ -8,9 +8,11 @@ cover_credit:
   source_url: 'https://unsplash.com'
 class: 'home-template'
 navigation: True
-# logo: 'assets/images/logo_discrete.png'
+logo: 'assets/images/logo_discrete_trans.png'
 current: home
-permalink: index.html
+permalink: /
+pagination:
+  enabled: true
 ---
 <!-- < default -->
 <!-- The tag above means - insert everything in this file into the [body] of the default.hbs template -->
@@ -36,7 +38,7 @@ permalink: index.html
     <a class="scroll-down icon-arrow-left" href="#content" data-offset="-45"><span class="hidden">Scroll Down</span></a>
 </header>
 
-{% comment %} TEMP: main content disabled
+
 <!-- The main content area on the homepage -->
 <main id="content" class="content" role="main">
 
@@ -44,4 +46,4 @@ permalink: index.html
     {% include loop.html %}
 
 </main>
-{% endcomment %}
+

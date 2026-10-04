@@ -31,6 +31,11 @@
 </head>
 <body class="{% if paginator.page > 1 %}paged archive-template{% elsif page.class %}{{ page.class }}{% else %}home-template{% endif %} nav-closed">
 
+    <!-- Site logo, pinned to the same top-left corner padding as .main-nav -->
+    <a class="site-logo" href="{{ site.baseurl }}">
+        <img src="{{ site.baseurl }}assets/images/logo_discrete_trans.png" alt="{{ site.name }}" />
+    </a>
+
     <!-- The blog navigation links -->
     {% include navigation.html %}
 

@@ -61,14 +61,46 @@ author:
 #
 plugins:
 - jekyll-feed
+- liquid_reading_time
 - jekyll-github-metadata
 - jekyll-include-cache
 - jekyll-sitemap
 - jekyll-paginate
+- jekyll-paginate-v2
+- jekyll-auto-authors
 # - jekyll-remote-theme
 
-# Pagination (jekyll-paginate)
-paginate: 5
+# jekyll-feed settings
+feed:
+  path: common/feed.xml
+
+# jekyll-paginate settings (legacy v1 key removed entirely; must be absent, not just falsy,
+# to coexist with jekyll-paginate-v2 below — jekyll-paginate-v2 only checks site.config["paginate"].nil?)
+
+# jekyll-paginate-v2 settings (required for jekyll-auto-authors)
+pagination:
+  enabled: true
+
+# jekyll-auto-authors settings
+autopages:
+  enabled: true
+  tags:
+    enabled: false
+  categories:
+    enabled: false
+  collections:
+    enabled: false
+  authors:
+    enabled: true
+    data: "_data/authors.yml"
+    layouts:
+      - "author-page.html"
+    permalink: "/author/:author/"
+    title: "Posts by :author"
+    exclude: []
+    slugify:
+      mode: none
+      cased: false
 
 # Include from processing (folders with "_" prefix are ignored, but some are included by default).
 # include:

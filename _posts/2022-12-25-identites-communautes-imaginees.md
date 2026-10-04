@@ -3,10 +3,11 @@ layout: post
 navigation: True
 title: Identités et Communautés Imaginées
 date: 2022-12-25 23:59:00
-# tags: identité société
+tags: identité société
 subclass: 'post'
 author: rahenda
-# categories: rahenda
+permalink: identites-communautes-imaginees.html
+categories: rahenda
 ---
 
 > Reçit et regard sur l'identité imaginaire
