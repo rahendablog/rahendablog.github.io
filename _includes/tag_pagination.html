@@ -2,14 +2,17 @@
 <nav class="pagination" role="pagination">
     {% if paginator.previous_page %}
         {% if paginator.previous_page == 1 %}
-            <a class="newer-posts" href="{{ site.baseurl }}tag/{{ page.tag }}" title="Previous Page">&laquo; Newer Posts</a>
+            {% capture tp_prev %}tag/{{ page.tag }}{% endcapture %}
+            <a class="newer-posts" href="{{ tp_prev | relative_url }}" title="Previous Page">&laquo; Newer Posts</a>
         {% else %}
-            <a class="newer-posts" href="{{ site.baseurl }}tag/{{ page.tag }}/page{{ paginator.previous_page }}/" title="Previous Page">&laquo; Newer Posts</a>
+            {% capture tp_prev2 %}tag/{{ page.tag }}/page{{ paginator.previous_page }}/{% endcapture %}
+            <a class="newer-posts" href="{{ tp_prev2 | relative_url }}" title="Previous Page">&laquo; Newer Posts</a>
       {% endif %}
     {% endif %}
     <span class="page-number"> Page {{ paginator.page }} of {{ paginator.total_pages }} </span>
     {% if paginator.next_page %} 
-        <a class="older-posts" href="{{ site.baseurl }}tag/{{ page.tag }}/page{{ paginator.next_page }}/" title="Next Page">Older Posts &raquo;</a>
+        {% capture tp_next %}tag/{{ page.tag }}/page{{ paginator.next_page }}/{% endcapture %}
+        <a class="older-posts" href="{{ tp_next | relative_url }}" title="Next Page">Older Posts &raquo;</a>
     {% endif %} 
 </nav>
 {% endif %}
