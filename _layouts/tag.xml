@@ -3,6 +3,7 @@ layout: atom
 title: nil
 ---
 {% for post in page.posts %}
+	{% unless post.unlisted %}
 	<item>
 	  <title>{{ post.title }}</title>
 	  <link>{{ post.url | absolute_url }}</link>
@@ -13,4 +14,5 @@ title: nil
 	     {{ post.content | expand_urls : site.url }}
 	  ]]></description>
 	</item>
+	{% endunless %}
 {% endfor %}

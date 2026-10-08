@@ -9,7 +9,7 @@ permalink: feed.xml
     <description>{% if site.description %}{{ site.description | xml_escape }}{% endif %}</description>
     <link>{{ site.url }}</link>
     {% for post in site.posts %}
-      {% unless post.link %}
+      {% unless post.link or post.unlisted %}
       <item>
         <title>{{ post.title | xml_escape }}</title>
         <pubDate>{{ post.date | date: "%a, %d %b %Y %H:%M:%S %z" }}</pubDate>

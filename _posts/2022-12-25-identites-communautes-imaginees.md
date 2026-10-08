@@ -8,6 +8,8 @@ subclass: 'post'
 author: rahenda
 permalink: identites-communautes-imaginees.html
 categories: rahenda
+unlisted: true
+sitemap: false
 ---
 
 > Reçit et regard sur l'identité imaginaire

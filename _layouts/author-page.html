@@ -39,9 +39,23 @@ current: author
                     </div>
                 {% endif %}
                 <div class="author-meta">
-                    {% if author[1].location %}<span class="author-location icon-location">{{ author[1].location }}</span>{% endif %}
-                    {% if author[1].url %}<span class="author-link icon-link"><a href="{{ author[1].url_full }}">{{ author[1].url }}</a></span>{% endif %}
-                    <span class="author-stats"><i class="icon-stats"></i>{% if paginator.total_posts == 0 %}No posts{% elsif paginator.total_posts == 1 %}1 post{% else %}{{ paginator.total_posts }} posts{% endif %}</span>
+                    {% if author[1].location %}
+                        <span class="author-location icon-location">{{ author[1].location }}</span>
+                    {% endif %}
+                    {% if author[1].url %}
+                        <span class="author-link icon-link"><a href="{{ author[1].url_full }}">{{ author[1].url }}</a></span>
+                    {% endif %}
+                    {% assign visible_posts = paginator.posts | where_exp: "p", "p.unlisted != true" %}
+                    <span class="author-stats">
+                        <i class="icon-stats"></i>
+                    {% if visible_posts.size == 0 %}
+                        No posts
+                    {% elsif visible_posts.size == 1 %}
+                        1 post
+                    {% else %}
+                        {{ visible_posts.size }} posts
+                    {% endif %}
+                    </span>
                 </div>
             {% endif %}
         {% endfor %}
