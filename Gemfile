@@ -19,4 +19,7 @@ group :jekyll_plugins do
   gem "liquid_reading_time"
   gem "jekyll-paginate-v2"
   gem "jekyll-auto-authors"
+  gem "jekyll-include-cache"
+  gem "jekyll-github-metadata"
+  gem "jekyll-ai-visible-content"
 end

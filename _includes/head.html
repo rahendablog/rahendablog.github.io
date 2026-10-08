@@ -16,10 +16,38 @@
     <meta name="twitter:url" content="{{ page.url | absolute_url }}" />
     <meta name="twitter:image:src" content="{{ page_image | relative_url }}" />
 
+    {% if page.layout == "post" %}
+    {% assign post_author = site.data.authors[page.author] %}
     <script type="application/ld+json">
 {
-    "@context": "http://schema.org",
-    "@type": "Website",
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "{{ page.title | strip_html | strip_newlines }}",
+    "url": "{{ page.url | absolute_url }}",
+    "image": "{{ page_image | absolute_url }}",
+    "description": "{% if page.description %}{{ page.description | strip_html | strip_newlines }}{% else %}{{ site.description | strip_html | strip_newlines }}{% endif %}",
+    "datePublished": "{{ page.date | date_to_xmlschema }}",
+    "dateModified": "{{ page.last_modified_at | default: page.date | date_to_xmlschema }}",
+    "author": {
+        "@type": "Person",
+        "name": "{% if post_author %}{{ post_author.name }}{% else %}{{ site.author.name }}{% endif %}"{% if post_author.url %},
+        "url": "{{ post_author.url }}"{% endif %}
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "{{ site.name }}"
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "{{ page.url | absolute_url }}"
+    }
+}
+    </script>
+    {% else %}
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "WebSite",
     "publisher": "{{ site.name }}",
     "name": "{% if page.title %}{{ page.title }}{% else %}{{ site.name }}{% endif %}",
     "url": "{{ page.url | absolute_url }}",
@@ -27,6 +55,7 @@
     "description": "{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}"
 }
     </script>
+    {% endif %}
 
     <meta name="generator" content="Jekyll 3.0.0" />
     <link rel="alternate" type="application/rss+xml" title="{{ site.name }}" href="{{ "feed.xml" | relative_url }}" />

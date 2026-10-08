@@ -28,7 +28,7 @@
 
 locale: fr
 title_separator:     #default [" | "]
-url:     #See baseurl - On Github Pages you may leave it blank - If you use CNAME use your domain
+url: https://rahendarosmedi.com     #See baseurl - On Github Pages you may leave it blank - If you use CNAME use your domain
 baseurl: "/"     #Must end with "/" (theme builds links as {{ site.baseurl }}path). On Github Pages user sites use "/". Have a look to: https://byparker.com/blog/2014/clearing-up-confusion-around-baseurl/
 words_per_minute:     #default[200]
 timezone:     #"Europe/Madrid ,see https://jekyllrb.com/docs/configuration/options/ and https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
@@ -40,8 +40,8 @@ subtitle: Rahenda's personal blog
 description: >- # this means to ignore newlines until "baseurl:"
   A business-driven product manager with engineering background
 author:
-  name: Rahenda
-  avatar: https://github.com/rahendatri.png
+  name: Biloute
+  avatar: https://github.com/biloute00.png
   location: Paris, FR
   links:
   - url: https://github.com/rahendatri
@@ -65,10 +65,23 @@ plugins:
 - jekyll-github-metadata
 - jekyll-include-cache
 - jekyll-sitemap
-- jekyll-paginate
 - jekyll-paginate-v2
 - jekyll-auto-authors
+- jekyll-ai-visible-content
 # - jekyll-remote-theme
+
+
+# jekyll-ai-visible-content
+ai_visible_content:
+  entity:
+    name: "Biloute R."
+    job_title: "Product Manager Who Builds It, Aligns Everyone, and Sells It"
+    description: "Ex-engineer, ex-manager, ex-sales, I thrive in complex B2B enviroment that requires heavy cross-functional collaborations."
+    same_as:
+      - https://linkedin.com/in/rahendarosmedi
+      - https://github.com/biloute00
+      - https://github.com/rahendatri
+      - https://gitlab.com/rahendatri
 
 # jekyll-feed settings
 feed:
