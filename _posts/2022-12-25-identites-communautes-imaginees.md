@@ -32,9 +32,9 @@ Ces catégorisations ne sont pas apparues du jour au lendemain. De l'histoire du
 
 Si aujourd'hui, certains pensent que leur racine est dans leur nation, dans leur croyance, ou dans leur ethnie, ces catégories n’existeront peut-être plus demain. Leur racine, n'en sera plus qu'une immagination du passé. Tout le monde peut appartenir aujourd'hui à une communauté et demain à aucune communauté.
 
-Mais une chose est sûre, tout le monde appartient et appartiendra pour toujours à l'Humanité. Nous prenons tous racine dans l'Humanité.
 
 Rennes, samedi 25 décembre 2022 à 23h59.
+
 Edit: Châtillon, samedi 4 octobre 2026 à 00:55.
 
 

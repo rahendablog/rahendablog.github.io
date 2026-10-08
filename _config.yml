@@ -34,11 +34,11 @@ words_per_minute:     #default[200]
 timezone:     #"Europe/Madrid ,see https://jekyllrb.com/docs/configuration/options/ and https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 short_url: 'rahendablog.github.io/'
 
-title: &site_title "Rahenda's blog"
+title: &site_title "Biloute's blog"
 name: *site_title
-subtitle: Rahenda's personal blog
+subtitle: Product Manager Who Builds It, Aligns Everyone, and Sells It
 description: >- # this means to ignore newlines until "baseurl:"
-  A business-driven product manager with engineering background
+  Ex-engineer, ex-manager, ex-sales, I thrive in complex B2B enviroment that requires heavy cross-functional collaborations.
 author:
   name: Biloute
   avatar: https://github.com/biloute00.png
@@ -67,7 +67,6 @@ plugins:
 - jekyll-sitemap
 - jekyll-paginate-v2
 - jekyll-auto-authors
-- jekyll-ai-visible-content
 # - jekyll-remote-theme
 
 
@@ -75,8 +74,8 @@ plugins:
 ai_visible_content:
   entity:
     name: "Biloute R."
-    job_title: "Product Manager Who Builds It, Aligns Everyone, and Sells It"
-    description: "Ex-engineer, ex-manager, ex-sales, I thrive in complex B2B enviroment that requires heavy cross-functional collaborations."
+    job_title: ""
+    description: ""
     same_as:
       - https://linkedin.com/in/rahendarosmedi
       - https://github.com/biloute00

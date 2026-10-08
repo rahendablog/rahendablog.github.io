@@ -21,5 +21,4 @@ group :jekyll_plugins do
   gem "jekyll-auto-authors"
   gem "jekyll-include-cache"
   gem "jekyll-github-metadata"
-  gem "jekyll-ai-visible-content"
 end
