@@ -68,10 +68,9 @@
     "image": "{{ site.author.avatar }}",
     "homeLocation": "{{ site.author.location }}",
     "sameAs": [
-        "https://linkedin.com/in/rahendarosmedi",
-        "https://github.com/biloute00",
-        "https://github.com/rahendatri",
-        "https://gitlab.com/rahendatri"
+        {%- for author_link in site.author.links -%}
+        {{ author_link.url }}{% unless forloop.last %},{% endunlessfor %}
+        {%- endfor -%}
     ]
 }
     </script>

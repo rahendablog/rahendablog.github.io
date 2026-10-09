@@ -34,21 +34,28 @@ words_per_minute:     #default[200]
 timezone:     #"Europe/Madrid ,see https://jekyllrb.com/docs/configuration/options/ and https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 short_url: 'rahendablog.github.io/'
 
-title: &site_title "Biloute's blog"
+title: &site_title "Biloute by Rahenda"
 name: *site_title
 subtitle: Product Manager Who Builds It, Aligns Everyone, and Sells It
 description: >- # this means to ignore newlines until "baseurl:"
-  Ex-engineer, ex-manager, ex-sales, I thrive in complex B2B enviroment that requires heavy cross-functional collaborations.
+  Build like an engineer, align like a manager, and sell like an SDR, I thrive in complex B2B enviroment that requires heavy cross-functional collaborations.
 author:
-  name: Biloute
+  name: Rahenda
   avatar: https://github.com/biloute00.png
   location: Rennes, FR
   links:
   - url: https://github.com/rahendatri
     icon: "fab fa-github"
     label: "View on Github"
-
-
+  - url: https://github.com/biloute00
+    icon: "fab fa-github"
+    label: "View on Github"
+  - url: https://gitlab.com/rahendatri
+    icon: "fab fa-gitlab"
+    label: "View on Gitlab"
+  - url: https://linkedin.com//in/rahendatri
+    icon: "fab fa-linkedin"
+    label: "View on LinkedIn"
 
 # Build settings
 
@@ -111,7 +118,6 @@ autopages:
 # their entries' file path in the `include:` list.
 #
 exclude:
-- dev-geo-optim/
 - .sass-cache/
 - .jekyll-cache/
 - gemfiles/

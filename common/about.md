@@ -10,7 +10,7 @@ permalink: about.html
 
 Hi ! 
 
-I am a product manager based in Rennes, France, with a track record spanning engineering, product, management, and sales.
+I am a product manager with a track record in engineering, management, and sales.
 
 I started my career in semi-conductor, building tools to support semiconductor manufacturing in critical situations.
 
