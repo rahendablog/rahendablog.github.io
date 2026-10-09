@@ -2,7 +2,7 @@ rahenda:
   username: rahenda
   name: Rahenda
   location: Rennes, FR
-  url_full: http://rahendarosmedi.com
-  url: http://rahendarosmedi.com
-  bio: "{ }"
+  url_full: https://rahendarosmedi.com
+  url: https://rahendarosmedi.com
+  bio: "Product manager with a background spanning engineering, DevOps/network engineering, and B2B sales. Started in semiconductor manufacturing, moved into DevOps and network engineering, then became a product manager building a cloud-native telecom platform. Delivered telecommunications infrastructure for the Paris 2024 Olympics, and currently works as a business development manager for enterprise APIs."
   assets: assets/images/author.png

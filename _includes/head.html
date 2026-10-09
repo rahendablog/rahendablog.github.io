@@ -57,5 +57,23 @@
     </script>
     {% endif %}
 
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "{{ site.author.name }}",
+    "jobTitle": "{{ site.subtitle }}",
+    "description": "{{ site.description | strip_html | strip_newlines }}",
+    "url": "{{ site.url }}",
+    "image": "{{ site.author.avatar }}",
+    "homeLocation": "{{ site.author.location }}",
+    "sameAs": [
+        {%- for author_link in site.author.links -%}
+        {{ author_link.url }}{% unless forloop.last %},{% endunlessfor %}
+        {%- endfor -%}
+    ]
+}
+    </script>
+
     <meta name="generator" content="Jekyll 3.0.0" />
     <link rel="alternate" type="application/rss+xml" title="{{ site.name }}" href="{{ "feed.xml" | relative_url }}" />
