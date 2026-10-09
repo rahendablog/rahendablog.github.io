@@ -3,147 +3,115 @@ layout: default
 disqus: false
 class: 'post-template'
 ---
-<!-- default -->
+<main class="site-main">
 
-<!-- The comment above "< default" means - insert everything in this file into -->
-    <!-- the [body] of the default.hbs template, which contains our header/footer. -->
+<article class="single {{ page.subclass }}">
 
-<!-- Everything inside the #post tags pulls data from the post -->
-<!-- #post -->
+    <header class="single-header gh-canvas">
+        <div class="single-meta">
+            <span class="single-meta-item single-meta-date">
+                <time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date_to_string }}</time>
+            </span>
+            {% capture reading_minutes %}{{ content | reading_time }}{% endcapture %}
+            <span class="single-meta-item single-meta-length">{{ reading_minutes }} min read</span>
+            {% if page.tags.size > 0 %}
+                {% assign primary_tag = page.tags.first %}
+                {% capture post_tag_path %}tag/{{ primary_tag }}{% endcapture %}
+                <span class="single-meta-item single-meta-tag">
+                    <a class="post-tag" href="{{ post_tag_path | relative_url }}">{{ primary_tag | capitalize }}</a>
+                </span>
+            {% endif %}
+        </div>
 
-<header class="main-header post-head {% if page.cover %}" style="background-image: url({{ page.cover | relative_url }}) {% else %}no-cover{% endif %}">
-    <nav class="main-nav {% if page.cover %} overlay {% endif %} clearfix">
-        <!-- {% if page.logo %}<a class="blog-logo" href="{{ site.baseurl }}"><img src="{{ site.baseurl }}{{ page.logo }}" alt="Blog Logo" /></a>{% endif %} -->
-        {% if page.navigation %}
-            <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
+        <h1 class="single-title">{{ page.title }}</h1>
+
+        {% if page.excerpt %}
+            <div class="single-excerpt">{{ page.excerpt | strip_html | truncatewords: 40 }}</div>
         {% endif %}
-    </nav>
-</header>
 
-<main class="content" role="main">
+        <div class="gh-meta-share">
+            <div class="share">
+                <a class="share-link share-link-x" href="https://twitter.com/share?text={{ page.title }}&amp;url={{ page.url | absolute_url }}" target="_blank" rel="noopener" aria-label="Share on Twitter">
+                    {% include icons/x.svg %}
+                    <span>Twitter</span>
+                </a>
+                <a class="share-link share-link-facebook" href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url }}" target="_blank" rel="noopener" aria-label="Share on Facebook">
+                    {% include icons/facebook.svg %}
+                    <span>Facebook</span>
+                </a>
+                <a class="share-link share-link-linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | absolute_url }}" target="_blank" rel="noopener" aria-label="Share on LinkedIn">
+                    {% include icons/linkedin.svg %}
+                    <span>LinkedIn</span>
+                </a>
+            </div>
+        </div>
 
-    <article class="{{ page.subclass }}">
+        {% if page.image %}
+            <figure class="single-media">
+                <img class="gh-feature-image" src="{{ page.image | relative_url }}" alt="{{ page.title }}">
+            </figure>
+        {% endif %}
+    </header>
 
-        <header class="post-header">
-            <h1 class="post-title">{{ page.title }}</h1>
-            <section class="post-meta">
-            <!-- <a href='{{ site.baseurl }}{{ page.about }}'>{{ site.author }}</a> -->
+    <div class="single-content gh-content gh-canvas">
+        {{ content }}
+    </div>
 
+    <div class="gh-canvas">
+    <footer class="single-footer">
+
+        <div class="single-footer-left">
+            {% if page.previous and page.previous.unlisted != true %}
+                <a class="navigation-link" href="{{ page.previous.url | relative_url }}" aria-label="Previous post">
+                    <span class="navigation-icon">{% include icons/arrow-left.svg %}</span>
+                </a>
+            {% endif %}
+        </div>
+
+        <div class="single-footer-middle">
             {% capture post_author_path %}author/{{ page.author }}{% endcapture %}
             {% for author in site.data.authors %}
                 {% if author[1].username == page.author %}
-                    <a href='{{ post_author_path | relative_url }}'>{{ author[1].name }}</a>
-                {% endif %}
-            {% endfor %}
-            <time class="post-date" datetime="{{ page.date | date:'%Y-%m-%d' }}">{{ page.date | date_to_string }}</time>
-                <!-- [[tags prefix=" on "]] -->
-                {% if page.tags.size > 0 %}
-                on
-                {% for tag in page.tags %}
-                    {% capture post_tag_path %}tag/{{ tag }}{% endcapture %}
-                    {% if forloop.index == page.tags.size %}
-                       <a href='{{ post_tag_path | relative_url }}'>{{ tag | capitalize }}</a>
-                    {% else %}
-                       <a href='{{ post_tag_path | relative_url }}'>{{ tag | capitalize }}</a>,
-                    {% endif %}
-                {% endfor %}
-                {% endif %}
-                {% capture reading_minutes %}{{ content | reading_time }}{% endcapture %}
-                <span class="post-reading-time" title="Estimated reading time">
-                    <svg class="post-reading-time-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-                        <circle cx="12" cy="12" r="9"></circle>
-                        <polyline points="12 7 12 12 15.5 14"></polyline>
-                    </svg>
-                    {{ reading_minutes }} minute{% if reading_minutes != '1' %}s{% endif %} read
-                </span>
-            </section>
-        </header>
-
-        <section class="post-content">
-
-            {{ content }}
-
-        </section>
-
-        <footer class="post-footer">
-
-            <!-- Everything inside the #author tags pulls data from the author -->
-            <!-- #author-->
-            {% for author in site.data.authors %}
-                {% if author[1].username == page.author %}
-                    {% if author[1].assets %}
-                        <figure class="author-image">
-                            <a class="img" href="{{ post_author_path | relative_url }}" style="background-image: url({{ author[1].assets | relative_url }})"><span class="hidden">{{ page.author }}'s Picture</span></a>
-                        </figure>
-                    {% endif %}
-
-                    <section class="author">
-                        <h4><a href="{{ post_author_path | relative_url }}">{{ author[1].name }}</a></h4>
-
-                        {% if author[1].bio %}
-                            <p> {{ author[1].bio }}</p>
-                        {% else %}
-                            <p>Read <a href="{{ post_author_path | relative_url }}">more posts</a> by this author.</p>
-                        {% endif %}
-                        <div class="author-meta">
-                            {% if author[1].location %}<span class="author-location icon-location"> {{ author[1].location }}</span>{% endif %}
-                            {% if author[1].url %}<span class="author-link icon-link"><a href="{{ author[1].url_full }}"> {{ author[1].url }}</a></span>{% endif %}
+                    <div class="single-footer-top">
+                        <h3 class="single-footer-title">Published by:</h3>
+                        <div class="author-list">
+                            <div class="author-image-placeholder u-placeholder square">
+                                <a href="{{ post_author_path | relative_url }}" title="{{ author[1].name }}">
+                                    {% if author[1].assets %}
+                                        <img class="u-object-fit" src="{{ author[1].assets | relative_url }}" alt="{{ author[1].name }}" loading="lazy">
+                                    {% else %}
+                                        <span class="u-object-fit">{% include icons/avatar.svg %}</span>
+                                    {% endif %}
+                                </a>
+                            </div>
                         </div>
-                    </section>
-
-                    <!-- /author  -->
-
-                    <section class="share">
-                        <h4>Share this post</h4>
-                        <a class="icon-twitter" href="http://twitter.com/share?text={{ page.title }}&amp;url={{ page.url | absolute_url }}"
-                            onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
-                            <span class="hidden">Twitter</span>
-                        </a>
-                        <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url }}"
-                            onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
-                            <span class="hidden">Facebook</span>
-                        </a>
-                        <a class="icon-google-plus" href="https://plus.google.com/share?url={{ page.url | absolute_url }}"
-                           onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
-                            <span class="hidden">Google+</span>
-                        </a>
-                    </section>
+                    </div>
                 {% endif %}
             {% endfor %}
+        </div>
 
-            <!-- Add Disqus Comments -->
-            {% if page.disqus %}
-                {% include disqus.html %}
+        <div class="single-footer-right">
+            {% if page.next and page.next.unlisted != true %}
+                <a class="navigation-link" href="{{ page.next.url | relative_url }}" aria-label="Next post">
+                    <span class="navigation-icon">{% include icons/arrow-right.svg %}</span>
+                </a>
             {% endif %}
+        </div>
 
-        </footer>
+    </footer>
+    </div>
 
-    </article>
+</article>
+
+{% include related-posts.html %}
+
+{% if page.disqus %}
+    <section class="gh-comments gh-canvas">
+        <header class="gh-comments-header">
+            <h3 class="gh-comments-title">Comments</h3>
+        </header>
+        {% include disqus.html %}
+    </section>
+{% endif %}
 
 </main>
-
-<aside class="read-next">
-
-    <!-- [[! next_post ]] -->{{ post.url | remove: '/' }}
-    {% if page.next and page.next.unlisted != true %}
-        <a class="read-next-story {% if page.next.cover %}" style="background-image: url({{ page.next.cover | relative_url }}){% else %}no-cover{% endif %}" href="{{ page.next.url | relative_url }}">
-            <section class="post">
-                <h2>{{ page.next.title }}</h2>
-                <p>{{ page.next.content | strip_html | truncatewords:15 }}</p>
-            </section>
-        </a>
-    {% endif %}
-    <!-- [[! /next_post ]] -->
-    <!-- [[! prev_post ]] -->
-    {% if page.previous and page.previous.unlisted != true %}
-        <a class="read-next-story prev {% if page.previous.cover %}" style="background-image: url({{ page.previous.cover | relative_url }}){% else %}no-cover{% endif %}" href="{{ page.previous.url | relative_url }}">
-            <section class="post">
-                <h2>{{ page.previous.title }}</h2>
-                <p>{{ page.previous.content | strip_html | truncatewords:15 }}</p>
-            </section>
-        </a>
-    {% endif %}
-    <!-- [[! /prev_post ]] -->
-</aside>
-
-<!-- /post -->

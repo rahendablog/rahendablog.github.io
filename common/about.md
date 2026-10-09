@@ -1,5 +1,6 @@
 ---
 layout: page
+class: 'page-template'
 title: About
 navigation: true
 logo: 'assets/images/logo_discrete.png'

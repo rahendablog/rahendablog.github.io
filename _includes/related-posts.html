@@ -1,0 +1,17 @@
+<!-- Posts sharing at least one tag with the current post, excluding itself and unlisted posts. -->
+{% assign related_posts = "" | split: "," %}
+{% for tag in page.tags %}
+    {% assign related_posts = related_posts | concat: site.tags[tag] %}
+{% endfor %}
+{% assign related_posts = related_posts | uniq | where_exp: "p", "p.url != page.url" | where_exp: "p", "p.unlisted != true" %}
+
+{% if related_posts.size > 0 %}
+<section class="related-wrapper gh-canvas">
+    <h3 class="related-title">You might also like...</h3>
+    <div class="post-feed expanded related-feed gh-feed gh-canvas">
+        {% for post in related_posts limit: 5 %}
+            {% include post_card.html post=post %}
+        {% endfor %}
+    </div>
+</section>
+{% endif %}

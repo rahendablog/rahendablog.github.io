@@ -1,0 +1,54 @@
+/*
+ * Standalone 404 page styling (common/404.html doesn't go through the normal
+ * gh-head/gh-foot shell — kept intentionally self-contained/minimal — but now
+ * uses this theme's own tokens/fonts instead of the old ghost.min.css/Open Sans).
+ */
+
+body.error-template {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    font-family: var(--font-sans);
+    color: var(--primary-text-color);
+    background-color: var(--white-color);
+}
+
+.error-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 480px;
+    padding: 0 var(--gap, 3.6rem);
+    text-align: center;
+}
+
+.error-ghost {
+    width: 120px;
+    margin-bottom: 1.5rem;
+}
+
+.error-code {
+    margin: 0;
+    font-size: 6rem;
+    font-weight: 800;
+    color: var(--ghost-accent-color);
+}
+
+.error-description {
+    margin: 0.5rem 0 2rem;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.error-link {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--darker-gray-color);
+    text-decoration: none;
+}
+
+.error-link:hover {
+    opacity: 0.75;
+}

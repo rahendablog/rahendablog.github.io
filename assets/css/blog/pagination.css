@@ -1,0 +1,46 @@
+/*
+ * Restyles the existing prev/next pagination markup shared by
+ * post_pagination.html / author_pagination.html / tag_pagination.html —
+ * their class names (.pagination, .newer-posts, .older-posts, .page-number)
+ * already match Ghost's own, so no template changes were needed, just this.
+ */
+
+.pagination {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    margin-top: 6.4rem;
+    font-size: 1.4rem;
+}
+
+.pagination a {
+    font-weight: 700;
+    color: var(--darker-gray-color);
+    text-decoration: none;
+}
+
+.pagination a:hover {
+    opacity: 0.75;
+}
+
+.page-number {
+    grid-column-start: 2;
+    color: var(--secondary-text-color);
+    white-space: nowrap;
+}
+
+.older-posts {
+    text-align: right;
+}
+
+@media (max-width: 575px) {
+    .pagination {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        text-align: center;
+    }
+
+    .older-posts {
+        text-align: center;
+    }
+}

@@ -1,0 +1,52 @@
+/*
+ * Share row. Upstream Edition's gh-button-share opens Ghost's native share
+ * sheet (needs a Ghost backend); we don't have one, so this renders a plain
+ * row of platform links instead (x/facebook/linkedin — same icons used
+ * elsewhere), still under the .gh-meta-share/.share-link classes so it reads
+ * visually consistent with the rest of the theme.
+ */
+
+.gh-meta-share {
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+}
+
+.share {
+    display: flex;
+}
+
+.share-link {
+    display: flex;
+    align-items: center;
+    height: 2.6rem;
+    padding: 0 0.8rem;
+    margin: 0 0.6rem;
+    font-size: 1.1rem;
+    font-weight: 800;
+    line-height: 0;
+    color: var(--white-color);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.04rem;
+    border-radius: 3px;
+}
+
+.share-link svg {
+    width: 14px;
+    height: 14px;
+    margin-right: 0.4rem;
+    fill: currentColor;
+}
+
+.share-link-facebook {
+    background-color: var(--facebook-color);
+}
+
+.share-link-x {
+    background-color: var(--twitter-color);
+}
+
+.share-link-linkedin {
+    background-color: var(--linkedin-color);
+}

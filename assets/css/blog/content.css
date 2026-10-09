@@ -1,0 +1,104 @@
+/*
+ * Post/page body copy typography (.gh-content), ported from Ghost's "Edition"
+ * theme. Targets plain tags since content here is kramdown-rendered Markdown,
+ * not Ghost's Koenig editor cards (no kg-* classes to key off).
+ */
+
+.gh-content {
+    margin-top: 4rem;
+    font-size: var(--content-font-size, 1.8rem);
+    word-break: break-word;
+}
+
+.gh-content > * + * {
+    margin-top: 1.6em;
+    margin-bottom: 0;
+}
+
+.gh-content > blockquote,
+.gh-content > hr {
+    position: relative;
+}
+
+.gh-content > blockquote,
+.gh-content > blockquote + *,
+.gh-content > hr,
+.gh-content > hr + * {
+    margin-top: 2.4em;
+}
+
+.gh-content h2 {
+    font-size: 1.6em;
+}
+
+.gh-content h3 {
+    font-size: 1.4em;
+}
+
+.gh-content a {
+    color: var(--ghost-accent-color);
+    text-decoration: underline;
+    word-break: break-word;
+}
+
+.gh-content dl,
+.gh-content ol,
+.gh-content ul {
+    padding-left: 2.8rem;
+}
+
+.gh-content li + li,
+.gh-content li :is(ul, ol) {
+    margin-top: 0.8rem;
+}
+
+.gh-content ol ol li {
+    list-style-type: lower-alpha;
+}
+
+.gh-content ol ol ol li {
+    list-style-type: lower-roman;
+}
+
+.gh-content table {
+    display: inline-block;
+    width: auto;
+    max-width: 100%;
+    overflow-x: auto;
+    font-family: var(--font-sans);
+    font-size: 1.6rem;
+    white-space: nowrap;
+    vertical-align: top;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+.gh-content table td,
+.gh-content table th {
+    padding: 6px 12px;
+    border: 1px solid var(--light-gray-color);
+}
+
+.gh-content table th {
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-align: left;
+    text-transform: uppercase;
+    letter-spacing: 0.2px;
+    background-color: var(--white-color);
+}
+
+.page-template .gh-content:only-child {
+    margin-top: 0 !important;
+}
+
+.page-template .gh-content:only-child > :first-child {
+    margin-top: var(--header-spacing, 80px);
+}
+
+@media (max-width: 767px) {
+    .gh-content {
+        margin-top: 3.2rem;
+        font-size: 1.7rem;
+    }
+}

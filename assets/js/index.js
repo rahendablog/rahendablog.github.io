@@ -1,56 +1,43 @@
 /**
- * Main JS file for Casper behaviours
+ * Edition theme behaviours (vanilla JS — no jQuery, see _TODO.md Phase 6).
  */
-
-/* globals jQuery, document */
-(function ($, undefined) {
+(function () {
     "use strict";
 
-    var $document = $(document);
+    document.addEventListener("DOMContentLoaded", function () {
 
-    $document.ready(function () {
+        // Mobile nav: burger toggles the full-screen overlay menu.
+        var burger = document.querySelector(".gh-burger");
+        if (burger) {
+            burger.addEventListener("click", function (e) {
+                e.preventDefault();
+                document.body.classList.toggle("is-head-open");
+            });
+        }
 
-        var $postContent = $(".post-content");
-        $postContent.fitVids();
-
-        $(".scroll-down").arctic_scroll();
-
-        $(".menu-button, .nav-cover, .nav-close").on("click", function(e){
-            e.preventDefault();
-            $("body").toggleClass("nav-opened nav-closed");
+        document.querySelectorAll(".gh-head-menu .nav a").forEach(function (link) {
+            link.addEventListener("click", function () {
+                document.body.classList.remove("is-head-open");
+            });
         });
 
-    });
-
-    // Arctic Scroll by Paul Adam Davis
-    // https://github.com/PaulAdamDavis/Arctic-Scroll
-    $.fn.arctic_scroll = function (options) {
-
-        var defaults = {
-            elem: $(this),
-            speed: 500
-        },
-
-        allOptions = $.extend(defaults, options);
-
-        allOptions.elem.click(function (event) {
-            event.preventDefault();
-            var $this = $(this),
-                $htmlBody = $('html, body'),
-                offset = ($this.attr('data-offset')) ? $this.attr('data-offset') : false,
-                position = ($this.attr('data-position')) ? $this.attr('data-position') : false,
-                toMove;
-
-            if (offset) {
-                toMove = parseInt(offset);
-                $htmlBody.stop(true, false).animate({scrollTop: ($(this.hash).offset().top + toMove) }, allOptions.speed);
-            } else if (position) {
-                toMove = parseInt(position);
-                $htmlBody.stop(true, false).animate({scrollTop: toMove }, allOptions.speed);
-            } else {
-                $htmlBody.stop(true, false).animate({scrollTop: ($(this.hash).offset().top) }, allOptions.speed);
+        document.addEventListener("keydown", function (e) {
+            if (e.key === "Escape") {
+                document.body.classList.remove("is-head-open");
             }
         });
 
-    };
-})(jQuery);
+        // Homepage hero: scroll smoothly to the content below the cover image.
+        var coverArrow = document.querySelector(".cover-arrow");
+        if (coverArrow) {
+            coverArrow.addEventListener("click", function (e) {
+                e.preventDefault();
+                var target = document.querySelector(coverArrow.getAttribute("href"));
+                if (target) {
+                    target.scrollIntoView({behavior: "smooth", block: "start"});
+                }
+            });
+        }
+
+    });
+})();

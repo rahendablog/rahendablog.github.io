@@ -1,0 +1,111 @@
+/*
+ * Edition's "Expanded" feed card layout (the theme's own default) — thumbnail on
+ * top, bold title, excerpt, meta row. Comment counts dropped (no lightweight
+ * Disqus count source wired up yet).
+ */
+
+.feed-header {
+    margin-top: 3vmin;
+    margin-bottom: 4.5rem;
+}
+
+.feed-header-wrapper {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--light-gray-color);
+}
+
+.feed-header-title {
+    margin-bottom: 0;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05rem;
+}
+
+.post-feed {
+    margin-top: -2.5rem;
+}
+
+.feed {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2.5rem 0;
+    overflow: hidden;
+    line-height: 1;
+}
+
+.feed + .feed {
+    border-top: 1px solid var(--light-gray-color);
+}
+
+.feed:hover .feed-title {
+    opacity: 0.8;
+}
+
+.feed:hover .feed-icon {
+    transform: translateX(0.4rem);
+}
+
+.feed-image {
+    width: 100%;
+    margin: 0 0 2rem;
+}
+
+.feed-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+.feed-title {
+    margin-bottom: 0;
+    overflow: hidden;
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.005em;
+    word-break: break-word;
+}
+
+.feed-excerpt {
+    display: -webkit-box;
+    margin-top: 0.8rem;
+    overflow-y: hidden;
+    font-size: 1.5rem;
+    line-height: 1.4;
+    word-break: break-word;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.feed-right {
+    display: flex;
+    align-items: center;
+    margin-top: 1.5rem;
+    font-size: 1.3rem;
+    color: var(--secondary-text-color);
+    transition: margin-right 0.2s var(--animation-base);
+}
+
+.feed-length {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.feed-length::before {
+    padding: 0 0.7rem;
+    font-family: serif;
+    font-size: 1rem;
+    line-height: 1;
+    content: "\2022";
+}
+
+.feed-date:first-child + .feed-length::before {
+    content: "\2022";
+}

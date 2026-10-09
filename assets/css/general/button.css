@@ -1,0 +1,46 @@
+/* Ported from Ghost's "Edition" theme. */
+
+.gh-btn {
+    display: inline-flex;
+    gap: 0.4em;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75em 1.15em;
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--color-white);
+    letter-spacing: inherit;
+    cursor: pointer;
+    background-color: var(--color-darker-gray);
+    border: 0;
+    border-radius: 100px;
+    text-decoration: none;
+}
+
+.gh-btn:hover {
+    opacity: 0.95;
+}
+
+.gh-primary-btn {
+    background-color: var(--ghost-accent-color);
+}
+
+.gh-icon-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    color: var(--darker-gray-color);
+    cursor: pointer;
+    background-color: transparent;
+    border: 0;
+    outline: none;
+}
+
+.gh-icon-btn svg {
+    width: 20px;
+    height: 20px;
+}

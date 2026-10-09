@@ -13,45 +13,14 @@
         {% endif %}
     </div>
 
-    <!-- This is the post loop - each post will be output using this markup -->
-    {% for post in paginator.posts %}
-    {% unless post.unlisted %}
-    <article class="post">
-        <header class="post-header">
-            <h2 class="post-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
-        </header>
-        <section class="post-excerpt">
-            <p>{{ post.content | strip_html | truncatewords: 26 }} <a class="read-more" href="{{ post.url | relative_url }}">&raquo;</a></p>
-        </section>
-        <footer class="post-meta">
-            {% for author in site.data.authors %}
-                {% if author[1].username == post.author %}
-
-                {% if author[1].assets %}<img class="author-thumb" src="{{ author[1].assets | relative_url }}" alt="Author image" nopin="nopin" />{% endif %}
-                <!-- author -->
-                {% capture loop_author_path %}author/{{ post.author }}{% endcapture %}
-                <a href='{{ loop_author_path | relative_url }}'>{{ author[1].name }}</a>
-
-                {% endif %}
-            {% endfor %}
-
-            <!-- [[tags prefix=" on "]] -->
-            {% if post.tags.size > 0 %}
-                on
-                {% for tag in post.tags %}
-                    {% capture loop_tag_path %}tag/{{ tag }}{% endcapture %}
-                    {% if forloop.index == post.tags.size %}
-                       <a href='{{ loop_tag_path | relative_url }}'>{{ tag | capitalize }}</a>
-                    {% else %}
-                       <a href='{{ loop_tag_path | relative_url }}'>{{ tag | capitalize }}</a>,
-                    {% endif %}
-                {% endfor %}
-            {% endif %}
-            <time class="post-date" datetime="{{ post.date | date:'%Y-%m-%d' }}">{{ post.date | date_to_string }}</time>
-        </footer>
-    </article>
-    {% endunless %}
-    {% endfor %}
+    <!-- Edition-style "expanded" feed cards: thumbnail, title, excerpt, date + reading time. -->
+    <div class="post-feed expanded gh-feed gh-canvas">
+        {% for post in paginator.posts %}
+        {% unless post.unlisted %}
+            {% include post_card.html post=post %}
+        {% endunless %}
+        {% endfor %}
+    </div>
 
     <!-- Previous/next page links - displayed on every page -->
     {% if page.class == 'home-template' %}

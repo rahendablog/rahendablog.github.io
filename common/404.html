@@ -21,30 +21,18 @@ permalink: 404.html
     <link rel="shortcut icon" href="{{ "assets/images/favicon.ico" | relative_url }}">
     <meta http-equiv="cleartype" content="on">
 
-    <link rel="stylesheet" type='text/css' href='//fonts.googleapis.com/css?family=Open+Sans:400,300,700'>
-    <link rel="stylesheet" href="{{ "assets/css/ghost.min.css" | relative_url }}" />
+    <link rel="stylesheet" type="text/css" href="{{ "assets/css/general/basics.css" | relative_url }}" />
+    <link rel="stylesheet" type="text/css" href="{{ "assets/css/general/fonts.css" | relative_url }}" />
+    <link rel="stylesheet" type="text/css" href="{{ "assets/css/misc/error.css" | relative_url }}" />
 </head>
-<body>
+<body class="error-template">
     <main role="main" id="main">
-        <div class="gh-app">
-            <div class="gh-viewport">
-                <div class="gh-view">
-                    <section class="error-content error-404 js-error-container">
-                        <section class="error-details">
-                            <img
-                                    class="error-ghost"
-                                    src="{{ "assets/images/404.png" | relative_url }}"
-                                    srcset="{{ "assets/images/404.png" | relative_url }}"/>
-                            <section class="error-message">
-                                <h1 class="error-code">404</h1>
-                                <h2 class="error-description">Page not found</h2>
-                                <a class="error-link" href="{{ "/" | relative_url }}">Go to the front page →</a>
-                            </section>
-                        </section>
-                    </section>
-                </div>
-            </div>
-        </div>
+        <section class="error-details">
+            <img class="error-ghost" src="{{ "assets/images/404.png" | relative_url }}" alt="">
+            <h1 class="error-code">404</h1>
+            <h2 class="error-description">Page not found</h2>
+            <a class="error-link" href="{{ "/" | relative_url }}">Go to the front page &rarr;</a>
+        </section>
     </main>
 
     <!-- Add Google Analytics  -->

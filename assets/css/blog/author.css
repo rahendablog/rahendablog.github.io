@@ -1,0 +1,7 @@
+/* Ported from Ghost's "Edition" theme. */
+
+.author-social {
+    display: flex;
+    justify-content: center;
+    margin-top: 2.5rem;
+}

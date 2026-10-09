@@ -1,0 +1,26 @@
+<!--
+  Edition-style "expanded" feed card. Shared by loop.html (home/tag/author feeds)
+  and related-posts.html. Pass the post via `include.post`.
+-->
+{% assign card_post = include.post %}
+<article class="feed {{ card_post.subclass }}">
+
+    <div class="feed-image u-placeholder rectangle">
+        {% if card_post.image %}
+            <img class="u-object-fit" src="{{ card_post.image | relative_url }}" alt="{{ card_post.title }}" loading="lazy">
+        {% endif %}
+    </div>
+
+    <div class="feed-wrapper">
+        <h2 class="feed-title">{{ card_post.title }}</h2>
+        <div class="feed-excerpt">{{ card_post.content | strip_html | truncatewords: 20 }}</div>
+        <div class="feed-right">
+            <time class="feed-date" datetime="{{ card_post.date | date: '%Y-%m-%d' }}">{{ card_post.date | date_to_string }}</time>
+            {% capture card_reading_minutes %}{{ card_post.content | reading_time }}{% endcapture %}
+            <div class="feed-length">{{ card_reading_minutes }} min read</div>
+        </div>
+    </div>
+
+    <a class="u-permalink" href="{{ card_post.url | relative_url }}" aria-label="{{ card_post.title }}"></a>
+
+</article>

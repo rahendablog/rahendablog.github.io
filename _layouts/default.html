@@ -17,8 +17,26 @@
     <link rel="shortcut icon" href="{{ "assets/images/favicon.ico" | relative_url }}" >
 
     <!-- Styles'n'Scripts -->
-    <link rel="stylesheet" type="text/css" href="{{ "assets/css/screen.css" | relative_url }}" />
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+    <!-- Edition theme upgrade (see _TODO.md): design tokens, webfonts, and the new gh-head/gh-foot shell. -->
+    <link rel="stylesheet" type="text/css" href="{{ "assets/css/general/reset.css" | relative_url }}" />
+    <link rel="stylesheet" type="text/css" href="{{ "assets/css/general/basics.css" | relative_url }}" />
+    <link rel="stylesheet" type="text/css" href="{{ "assets/css/general/fonts.css" | relative_url }}" />
+    <link rel="stylesheet" type="text/css" href="{{ "assets/css/general/button.css" | relative_url }}" />
+    <link rel="stylesheet" type="text/css" href="{{ "assets/css/site/layout.css" | relative_url }}" />
+    <link rel="stylesheet" type="text/css" href="{{ "assets/css/site/header.css" | relative_url }}" />
+    <link rel="stylesheet" type="text/css" href="{{ "assets/css/site/footer.css" | relative_url }}" />
+    <link rel="stylesheet" type="text/css" href="{{ "assets/css/site/cover.css" | relative_url }}" />
+    <link rel="stylesheet" type="text/css" href="{{ "assets/css/misc/utils.css" | relative_url }}" />
+    <link rel="stylesheet" type="text/css" href="{{ "assets/css/blog/feed.css" | relative_url }}" />
+    <link rel="stylesheet" type="text/css" href="{{ "assets/css/blog/featured.css" | relative_url }}" />
+    <link rel="stylesheet" type="text/css" href="{{ "assets/css/blog/pagination.css" | relative_url }}" />
+    <link rel="stylesheet" type="text/css" href="{{ "assets/css/blog/single.css" | relative_url }}" />
+    <link rel="stylesheet" type="text/css" href="{{ "assets/css/blog/content.css" | relative_url }}" />
+    <link rel="stylesheet" type="text/css" href="{{ "assets/css/blog/share.css" | relative_url }}" />
+    <link rel="stylesheet" type="text/css" href="{{ "assets/css/blog/related.css" | relative_url }}" />
+    <link rel="stylesheet" type="text/css" href="{{ "assets/css/blog/comments.css" | relative_url }}" />
+    <link rel="stylesheet" type="text/css" href="{{ "assets/css/blog/taxonomy.css" | relative_url }}" />
+    <link rel="stylesheet" type="text/css" href="{{ "assets/css/blog/author.css" | relative_url }}" />
     <link rel="stylesheet" type="text/css" href="{{ "assets/css/syntax.css" | relative_url }}" />
 
     <!-- highlight.js -->
@@ -29,39 +47,65 @@
     {% include head.html %}
 
 </head>
-<body class="{% if paginator.page > 1 %}paged archive-template{% elsif page.class %}{{ page.class }}{% else %}home-template{% endif %} nav-closed">
+<body class="is-head-left-logo {% if paginator.page > 1 %}paged archive-template{% elsif page.class %}{{ page.class }}{% else %}home-template{% endif %}{% if page.class == 'home-template' and page.cover %} with-full-cover is-head-transparent{% endif %}">
+<div class="site">
 
-    <!-- Site logo, pinned to the same top-left corner padding as .main-nav -->
-    <a class="site-logo" href="{{ "/" | relative_url }}">
-        <img src="{{ "assets/images/logo_discrete_trans.png" | relative_url }}" alt="{{ site.name }}" />
-    </a>
+    <header id="gh-head" class="gh-head gh-outer">
+        <div class="gh-head-inner gh-inner">
+            <div class="gh-head-brand">
+                <div class="gh-head-brand-wrapper">
+                    <a class="gh-head-logo" href="{{ "/" | relative_url }}">
+                        <img src="{{ "assets/images/logo_discrete_trans.png" | relative_url }}" alt="{{ site.name }}" />
+                    </a>
+                </div>
+                <button class="gh-burger" aria-label="Toggle menu"></button>
+            </div>
 
-    <!-- The blog navigation links -->
-    {% include navigation.html %}
+            <nav class="gh-head-menu">
+                {% include navigation.html %}
+            </nav>
+        </div>
+    </header>
 
-    <div class="site-wrapper">
-
+    <div class="site-content">
         <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
         {{ content }}
-
-        <!-- The tiny footer at the very bottom -->
-        <footer class="site-footer clearfix">
-          <section class="copyright"><a href="{{ "/" | relative_url }}">{{ site.name }}</a> &copy; {{  site.time | date: '%Y' }}</section>
-        </footer>
     </div>
+
+    <footer class="gh-foot no-menu gh-outer">
+        <div class="gh-foot-inner gh-inner">
+            <div class="gh-copyright">
+                <a href="{{ "/" | relative_url }}">{{ site.name }}</a> &copy; {{ site.time | date: '%Y' }}
+            </div>
+            <div class="gh-social-links">
+                {% for link in site.author.links %}
+                    <a href="{{ link.url }}" target="_blank" rel="noopener" aria-label="{{ link.label }}">
+                        {% if link.icon contains 'github' %}
+                            {% include icons/github.svg %}
+                        {% elsif link.icon contains 'envelope' %}
+                            {% include icons/email.svg %}
+                        {% else %}
+                            <span>{{ link.label }}</span>
+                        {% endif %}
+                    </a>
+                {% endfor %}
+            </div>
+            <div class="gh-powered-by">
+                Built with Jekyll
+            </div>
+        </div>
+    </footer>
+
+</div>
     <!-- highlight.js -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
 
-    <!-- jQuery needs to come before `{{ghost_foot}}` so that jQuery can be used in code injection -->
-    <script type="text/javascript" src="//code.jquery.com/jquery-1.12.0.min.js"></script>
     <!-- Ghost outputs important scripts and data with this tag -->
     <!-- {{ghost_foot}} -->
     <!-- Add Google Analytics  -->
     {% include analytics.html %}
-    <!-- Fitvids makes video embeds responsive and awesome -->
-    <script type="text/javascript" src="{{ "assets/js/jquery.fitvids.js" | relative_url }}"></script>
-    <!-- The main JavaScript file for Casper -->
+    <!-- Edition theme behaviours: burger menu, cover-arrow scroll (vanilla JS, no jQuery) -->
     <script type="text/javascript" src="{{ "assets/js/index.js" | relative_url }}"></script>
 
     <!-- Floating chat agent -->

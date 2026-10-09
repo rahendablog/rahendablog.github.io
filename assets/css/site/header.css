@@ -1,0 +1,222 @@
+/*
+ * Edition-style header ("gh-head"), simplified from Ghost's shared-theme-assets +
+ * theme CSS for a 2-link nav with no search/members backend.
+ */
+
+.gh-head {
+    position: relative;
+    height: 100px;
+    background-color: var(--color-white);
+}
+
+.gh-head-inner {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    height: 100%;
+    gap: var(--head-nav-gap);
+}
+
+.gh-head-brand {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    line-height: 1;
+}
+
+.gh-head-brand-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.gh-head-logo {
+    font-family: var(--font-sans);
+    font-size: 2.2rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--color-darker-gray);
+    text-decoration: none;
+}
+
+.gh-head-logo img {
+    max-height: 40px;
+}
+
+.gh-head-menu {
+    display: flex;
+    justify-content: center;
+}
+
+.gh-head-menu .nav {
+    display: inline-flex;
+    gap: var(--head-nav-gap);
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    white-space: nowrap;
+}
+
+.gh-head-menu .nav a {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-darker-gray);
+    text-decoration: none;
+}
+
+.gh-head-menu .nav a:hover {
+    opacity: 0.75;
+}
+
+.gh-head-actions {
+    display: flex;
+    gap: var(--head-nav-gap);
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.gh-search {
+    margin-right: -6px;
+    margin-left: -6px;
+}
+
+.gh-search:hover {
+    opacity: 0.9;
+}
+
+.gh-burger {
+    position: relative;
+    display: none;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    margin-right: -3px;
+    cursor: pointer;
+    background-color: transparent;
+    border: 0;
+}
+
+.gh-burger::before,
+.gh-burger::after {
+    position: absolute;
+    left: 3px;
+    width: 24px;
+    height: 1px;
+    content: "";
+    background-color: var(--color-darker-gray);
+    transition: all 0.2s cubic-bezier(0.04, 0.04, 0.12, 0.96);
+}
+
+.gh-burger::before {
+    top: 11px;
+}
+
+.gh-burger::after {
+    bottom: 11px;
+}
+
+.is-head-open .gh-burger::before {
+    top: 15px;
+    transform: rotate(45deg);
+}
+
+.is-head-open .gh-burger::after {
+    bottom: 14px;
+    transform: rotate(-45deg);
+}
+
+/* A publication-wide cover image (none set yet) tints the header with the accent
+   color on every page except home, where the hero itself carries the color. */
+.is-head-brand:not(.is-head-transparent) .gh-head {
+    background-color: var(--ghost-accent-color);
+}
+
+.is-head-brand:not(.is-head-transparent) .gh-head-logo,
+.is-head-brand:not(.is-head-transparent) .gh-head-menu .nav a,
+.is-head-brand:not(.is-head-transparent) .gh-search {
+    color: var(--color-white);
+}
+
+.is-head-transparent .gh-head {
+    position: absolute;
+    right: 0;
+    left: 0;
+    z-index: 90;
+    background-color: transparent;
+}
+
+.is-head-transparent .gh-head-logo,
+.is-head-transparent .gh-head-menu .nav a,
+.is-head-transparent .gh-search {
+    color: var(--color-white);
+}
+
+.is-head-transparent .gh-burger::before,
+.is-head-transparent .gh-burger::after {
+    background-color: var(--color-white);
+}
+
+@media (max-width: 767px) {
+    .gh-head {
+        height: 64px;
+    }
+
+    .gh-head-inner {
+        grid-template-columns: 1fr;
+    }
+
+    .gh-head-menu,
+    .gh-head-actions .gh-search {
+        display: none;
+    }
+
+    .gh-burger {
+        display: block;
+    }
+
+    .is-head-open .gh-head {
+        position: fixed;
+        inset: 0;
+        z-index: 3999999;
+        height: 100%;
+        overflow-y: auto;
+        background-color: var(--color-white);
+    }
+
+    .is-head-open.is-head-brand .gh-head,
+    .is-head-open.is-head-transparent .gh-head {
+        background-color: var(--ghost-accent-color);
+    }
+
+    .is-head-open .gh-head-menu {
+        display: flex;
+    }
+
+    .is-head-open .gh-head-inner {
+        grid-template-rows: auto 1fr;
+        grid-template-columns: 1fr;
+        height: auto;
+        min-height: 100%;
+    }
+
+    .is-head-open .gh-head-brand {
+        display: flex;
+        grid-row: 1;
+        height: 64px;
+    }
+
+    .is-head-open .gh-head-menu {
+        grid-row: 2;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .is-head-open .gh-head-menu .nav {
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .is-head-open .gh-head-menu .nav a {
+        font-size: 2.6rem;
+    }
+}

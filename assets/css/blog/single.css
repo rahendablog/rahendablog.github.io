@@ -1,0 +1,151 @@
+/* Ported from Ghost's "Edition" theme. */
+
+.single-header {
+    margin-bottom: 4.5rem;
+    text-align: center;
+}
+
+.single-meta {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--secondary-text-color);
+    text-transform: uppercase;
+}
+
+.single-meta-item + .single-meta-item::before {
+    padding: 0 0.3rem;
+    font-family: serif;
+    content: "\2022";
+}
+
+.single-title {
+    margin-bottom: 0;
+    font-size: 4rem;
+    line-height: 1.2;
+    letter-spacing: -0.1rem;
+    word-break: break-word;
+}
+
+.single-excerpt {
+    margin-top: 2rem;
+    font-size: 1.8rem;
+    word-break: break-word;
+}
+
+.single-media {
+    margin-top: 4.5rem;
+    margin-bottom: 0;
+}
+
+.single-media img {
+    width: 100%;
+}
+
+/* Responsive video embeds without fitvids.js: modern browsers derive the intrinsic
+   aspect ratio from an iframe's width/height attributes, so constraining max-width
+   and letting height scale is enough to keep e.g. a YouTube embed in proportion. */
+.single-content iframe,
+.single-content embed,
+.single-content object,
+.single-content video {
+    max-width: 100%;
+    height: auto;
+}
+
+.single-footer {
+    display: flex;
+    align-items: center;
+    margin-top: 4.5rem;
+}
+
+.single-footer-left,
+.single-footer-right {
+    display: flex;
+    flex: 2;
+}
+
+.single-footer-right {
+    justify-content: flex-end;
+}
+
+.single-footer-middle,
+.single-footer-top {
+    display: flex;
+    flex-direction: column;
+}
+
+.single-footer-top {
+    align-items: center;
+}
+
+.single-footer-title {
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+}
+
+.author-list {
+    display: flex;
+}
+
+.author-list .author-image-placeholder {
+    flex-shrink: 0;
+    width: 54px;
+    margin: 0 -4px;
+    overflow: hidden;
+    border: 2px solid var(--white-color);
+    border-radius: 50%;
+}
+
+.author-list .author-image-placeholder span {
+    background-color: var(--light-gray-color);
+}
+
+.author-meta {
+    margin-top: 0.5rem;
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--secondary-text-color);
+    text-transform: uppercase;
+    letter-spacing: 0.02rem;
+}
+
+.navigation-link,
+.navigation-icon {
+    display: flex;
+    align-items: center;
+}
+
+.navigation-icon {
+    width: 30px;
+    height: 30px;
+    margin: 0 -2px;
+    color: var(--darker-gray-color);
+}
+
+.navigation-next .navigation-icon {
+    justify-content: flex-end;
+}
+
+.navigation-icon svg {
+    width: 30px;
+    height: 30px;
+}
+
+@media (max-width: 767px) {
+    .single-header {
+        margin-bottom: 3rem;
+    }
+
+    .single-title {
+        font-size: 2.6rem;
+    }
+
+    .single-excerpt {
+        font-size: 1.7rem;
+    }
+
+    .single-media {
+        margin-top: 3rem;
+    }
+}

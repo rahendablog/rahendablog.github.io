@@ -1,0 +1,156 @@
+/*
+ * Base element reset/typography, ported from Ghost's shared-theme-assets base
+ * that Edition (and every other new CSS file in this upgrade) is built on top
+ * of. Load this FIRST: `html{font-size:62.5%}` makes 1rem = 10px, which every
+ * rem value used across the general/site/blog CSS files assumes.
+ */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+blockquote,
+dd,
+dl,
+figure,
+p {
+    margin: 0;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    min-height: 100vh;
+    font-family: var(--font-sans);
+    font-size: 1.6rem;
+    line-height: 1.6;
+    color: var(--primary-text-color);
+    background-color: var(--white-color);
+    text-rendering: optimizespeed;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+img,
+picture {
+    display: block;
+    max-width: 100%;
+}
+
+img {
+    height: auto;
+}
+
+a {
+    color: var(--darker-gray-color);
+    text-decoration: none;
+}
+
+a:hover {
+    opacity: 0.8;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-sans);
+    font-weight: 800;
+    line-height: 1.15;
+    color: var(--darker-gray-color);
+    letter-spacing: -0.02em;
+}
+
+h1 {
+    font-size: var(--h1-size);
+}
+
+h2 {
+    font-size: 2.8rem;
+}
+
+h3 {
+    font-size: 2.4rem;
+}
+
+h4 {
+    font-size: 2.2rem;
+}
+
+h5 {
+    font-size: 2rem;
+}
+
+h6 {
+    font-size: 1.8rem;
+}
+
+hr {
+    width: 100%;
+    height: 1px;
+    background-color: var(--light-gray-color);
+    border: 0;
+}
+
+blockquote:not([class]) {
+    padding-left: 2rem;
+    border-left: 4px solid var(--ghost-accent-color);
+}
+
+figcaption {
+    margin-top: 1.6rem;
+    font-size: 1.4rem;
+    line-height: 1.4;
+    color: var(--secondary-text-color);
+    text-align: center;
+}
+
+pre {
+    padding: 1.6rem 2.4rem;
+    overflow-x: auto;
+    line-height: 1.5;
+    white-space: pre;
+    background-color: var(--lighter-gray-color);
+}
+
+code {
+    font-family: var(--font-mono);
+    font-size: 15px;
+}
+
+:not(pre) > code {
+    padding: 0.4rem;
+    color: var(--ghost-accent-color);
+    background-color: var(--lighter-gray-color);
+    border-radius: 3px;
+}
+
+iframe {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    border: 0;
+}
+
+@media (max-width: 767px) {
+    h2 {
+        font-size: 2.4rem;
+    }
+
+    h3 {
+        font-size: 2.1rem;
+    }
+}
