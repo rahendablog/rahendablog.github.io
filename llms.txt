@@ -1,0 +1,40 @@
+---
+layout: null
+permalink: /llms.txt
+---
+# Biloute's blog
+
+> Personal website and blog of Biloute, a product manager based in Rennes,
+> France, with a background in engineering, DevOps/network engineering, and
+> B2B sales, currently working in business development for enterprise telecom
+> APIs. Site is in French (some content) and English (site chrome).
+
+This file follows the llms.txt convention (https://llmstxt.org/) for making a
+site's key information directly retrievable by AI assistants without requiring
+HTML scraping.
+
+## Profile
+
+- [About / Profile]({{ site.url }}/about.html): Biography — career path from
+  semiconductor manufacturing, to DevOps/network engineering, to product
+  management, to Paris 2024 Olympics telecom infrastructure, to business
+  development for enterprise APIs.
+
+## Content
+
+- [Homepage]({{ site.url }}/): latest posts.
+- [RSS/Atom feed]({{ site.url }}/feed.xml): machine-readable feed of published
+  posts.
+- [Sitemap]({{ site.url }}/sitemap.xml): full list of indexable URLs on the
+  site.
+
+## Contact / Social
+
+- GitHub: https://github.com/biloute00
+- GitHub (alt handle): https://github.com/rahendatri
+- LinkedIn: https://linkedin.com/in/rahendarosmedi
+- GitLab: https://gitlab.com/rahendatri
+
+## Optional
+
+- [404 page]({{ site.url }}/404.html)

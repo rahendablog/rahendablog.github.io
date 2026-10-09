@@ -42,14 +42,11 @@ description: >- # this means to ignore newlines until "baseurl:"
 author:
   name: Biloute
   avatar: https://github.com/biloute00.png
-  location: Paris, FR
+  location: Rennes, FR
   links:
   - url: https://github.com/rahendatri
     icon: "fab fa-github"
     label: "View on Github"
-  - url: test@mail.mail
-    icon: far fa-envelope
-    label: "My personal email"
 
 
 
@@ -68,19 +65,6 @@ plugins:
 - jekyll-paginate-v2
 - jekyll-auto-authors
 # - jekyll-remote-theme
-
-
-# jekyll-ai-visible-content
-ai_visible_content:
-  entity:
-    name: "Biloute R."
-    job_title: ""
-    description: ""
-    same_as:
-      - https://linkedin.com/in/rahendarosmedi
-      - https://github.com/biloute00
-      - https://github.com/rahendatri
-      - https://gitlab.com/rahendatri
 
 # jekyll-feed settings
 feed:
