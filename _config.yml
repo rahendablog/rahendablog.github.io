@@ -111,6 +111,7 @@ autopages:
 # their entries' file path in the `include:` list.
 #
 exclude:
+- dev-geo-optim/
 - .sass-cache/
 - .jekyll-cache/
 - gemfiles/
