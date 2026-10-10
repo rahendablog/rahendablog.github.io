@@ -62,7 +62,7 @@
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "{{ site.author.name }}",
-    "jobTitle": "{{ site.subtitle }}",
+    "jobTitle": "{{ site.subtitle | join: ' ' | strip_html | strip_newlines }}",
     "description": "{{ site.description | strip_html | strip_newlines }}",
     "url": "{{ site.url }}",
     "image": "{{ site.author.avatar }}",

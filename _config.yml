@@ -32,11 +32,13 @@ url: https://rahendarosmedi.com     #See baseurl - On Github Pages you may leave
 baseurl: "/"     #Must end with "/" (theme builds links as {{ site.baseurl }}path). On Github Pages user sites use "/". Have a look to: https://byparker.com/blog/2014/clearing-up-confusion-around-baseurl/
 words_per_minute:     #default[200]
 timezone:     #"Europe/Madrid ,see https://jekyllrb.com/docs/configuration/options/ and https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-short_url: 'rahendablog.github.io/'
+short_url: 'rahendarosmedi.com'
 
-title: &site_title "Biloute by Rahenda"
+title: &site_title "Biloute"
 name: *site_title
-subtitle: Product Manager Who Builds It, Aligns Everyone, and Sells It
+subtitle:
+  - "Product Manager"
+  - "Cloud - API - DevSecOps"
 description: >- # this means to ignore newlines until "baseurl:"
   Build like an engineer, align like a manager, and sell like an SDR, I thrive in complex B2B enviroment that requires heavy cross-functional collaborations.
 author:
