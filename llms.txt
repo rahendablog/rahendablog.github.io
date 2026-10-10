@@ -5,9 +5,9 @@ permalink: /llms.txt
 # Rahenda
 
 > Personal website and blog of Rahenda, a product manager based in Rennes,
-> France, with a background in engineering, DevOps/network engineering, and
-> B2B sales, currently working in business development for enterprise telecom
-> APIs. Site is in French (some content) and English (site chrome).
+> France, with a background in engineering, stakeholder management, and
+> B2B sales, with expertise in Cloud platform, API, and DevOps. 
+> Site is in French (some content) and English (site chrome).
 
 This file follows the llms.txt convention (https://llmstxt.org/) for making a
 site's key information directly retrievable by AI assistants without requiring
@@ -16,9 +16,9 @@ HTML scraping.
 ## Profile
 
 - [About / Profile]({{ "/about.html" | absolute_url }}): Biography — career path from
-  semiconductor manufacturing, to DevOps/network engineering, to product
-  management, to Paris 2024 Olympics telecom infrastructure, to business
-  development for enterprise APIs.
+  semiconductor manufacturing, to DevOps engineering, to cloud product
+  management, to stakeholder management during 2024 Summer Olympics in Paris, to business
+  development in API for B2B customers.
 
 ## Content
 
