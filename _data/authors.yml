@@ -1,8 +1,8 @@
 rahenda:
-  username: {{ site.author.name | slugify }}
-  name: {{ site.author.name }}
-  location: {{ site.author.location }}
-  url_full: {{ site.url }}
-  url: {{ site.url }}
-  bio: {{ site.description }}
+  username: rahenda
+  name: Rahenda
+  location: Rennes, FR
+  url_full: https://github.com/rahendatri
+  url: github.com/rahendatri
+  bio: Build like an engineer, align like a manager, and sell like an SDR, I thrive in complex B2B enviroment that requires heavy cross-functional collaborations.
   assets: assets/images/author.png
