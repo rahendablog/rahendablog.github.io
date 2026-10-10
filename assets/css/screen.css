@@ -1844,6 +1844,36 @@ body.page-template .post-title {
     float: left;
 }
 
+.author-social-links {
+    display: flex;
+    width: 100%;
+    float: none;
+    clear: both;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.author-social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background-color: #15171A;
+    color: #ffffff;
+    font-size: 1.4rem;
+    line-height: 1;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.author-social-link:hover {
+    opacity: 0.7;
+    transform: scale(1.08);
+}
+
 
 /* ==========================================================================
    12. Media Queries - Smaller than 900px
@@ -2230,6 +2260,16 @@ body.page-template .post-title {
 
     .site-footer {
         margin-top: 3rem;
+    }
+
+    .copyright {
+        width: 100%;
+        float: none;
+        text-align: center;
+    }
+
+    .author-social-links {
+        margin-top: 1rem;
     }
 
     .author-profile {

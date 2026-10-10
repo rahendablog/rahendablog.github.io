@@ -25,6 +25,9 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/default.min.css">
     <style>.hljs { background: none; }</style>
 
+    <!-- Font Awesome (brand icons for author social links) -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" referrerpolicy="no-referrer" />
+
     <!-- Ghost outputs important style and meta data with this tag -->
     {% include head.html %}
 
@@ -47,6 +50,15 @@
         <!-- The tiny footer at the very bottom -->
         <footer class="site-footer clearfix">
           <section class="copyright"><a href="{{ "/" | relative_url }}">{{ site.name }}</a> &copy; {{  site.time | date: '%Y' }}</section>
+          {% if site.author.links %}
+          <nav class="author-social-links" aria-label="Social links">
+            {% for author_link in site.author.links %}
+            <a href="{{ author_link.url }}" class="author-social-link" target="_blank" rel="noopener noreferrer" title="{{ author_link.label }}" aria-label="{{ author_link.label }}">
+              <i class="{{ author_link.icon }}" aria-hidden="true"></i>
+            </a>
+            {% endfor %}
+          </nav>
+          {% endif %}
         </footer>
     </div>
     <!-- highlight.js -->

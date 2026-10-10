@@ -34,7 +34,7 @@ words_per_minute:     #default[200]
 timezone:     #"Europe/Madrid ,see https://jekyllrb.com/docs/configuration/options/ and https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 short_url: 'rahendarosmedi.com'
 
-title: &site_title "Biloute"
+title: &site_title "Rahenda"
 name: *site_title
 subtitle:
   - "Product Manager"
@@ -170,3 +170,5 @@ defaults:
     show_tags: true
     show_categories: true
     show_author: true
+    permalink: /:slug.html
+    author: rahenda

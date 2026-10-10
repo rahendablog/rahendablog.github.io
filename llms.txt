@@ -2,9 +2,9 @@
 layout: null
 permalink: /llms.txt
 ---
-# Biloute by Rahenda
+# Rahenda
 
-> Personal website and blog of Biloute (Rahenda), a product manager based in Rennes,
+> Personal website and blog of Rahenda, a product manager based in Rennes,
 > France, with a background in engineering, DevOps/network engineering, and
 > B2B sales, currently working in business development for enterprise telecom
 > APIs. Site is in French (some content) and English (site chrome).
