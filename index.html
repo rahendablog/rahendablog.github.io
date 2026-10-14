@@ -1,11 +1,7 @@
 ---
 layout: default
 cover: 'assets/images/cover1.jpg'
-cover_credit:
-  author: 'Peter Ivey-Hansen'
-  author_url: 'https://unsplash.com/@peteriveyphotography'
-  source: 'Unsplash'
-  source_url: 'https://unsplash.com'
+cover_credit: 'Photo by Peter Ivey-Hansen on Unsplash'
 class: 'home-template'
 navigation: True
 logo: 'assets/images/logo_discrete_trans.png'
@@ -29,11 +25,10 @@ pagination:
     <div class="vertical">
         <div class="main-header-content inner">
             <h1 class="page-title">{{ site.name }}</h1>
-            <h2 class="page-description">{{ site.subtitle | join: "<br />" }}</h2>
-            <a class="header-button" href="/tutorials/">career-ops tutorial</a>
+            <h2 class="page-description">{{ site.subtitle | join: "<br />" }}{% if site.subtitle_rotating %}<br /><span class="rotating-subtitle is-visible" data-phrases="{{ site.subtitle_rotating | jsonify | escape }}" data-interval=1500>{{ site.subtitle_rotating | first }}</span>{% endif %}</h2>
         </div>
     </div>
-    {% if page.cover and page.cover_credit %}<p class="cover-credit">Photo by <a href="{{ page.cover_credit.author_url }}" target="_blank" rel="noopener">{{ page.cover_credit.author }}</a> on <a href="{{ page.cover_credit.source_url }}" target="_blank" rel="noopener">{{ page.cover_credit.source }}</a></p>{% endif %}
+    {% if page.cover and page.cover_credit %}<p class="cover-credit">{{ page.cover_credit }}</p>{% endif %}
     <a class="scroll-down icon-arrow-left" href="#content" data-offset="-45"><span class="hidden">Scroll Down</span></a>
 </header>
 

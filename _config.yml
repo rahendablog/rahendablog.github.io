@@ -38,7 +38,9 @@ title: &site_title "Rahenda"
 name: *site_title
 subtitle:
   - "Product Manager"
-  - "Cloud - API - DevSecOps"
+subtitle_rotating:
+  - "#Cloud - #API - #DevSecOps"
+  - "Engineering → Management → Business"
 description: >- # this means to ignore newlines until "baseurl:"
   Build like an engineer, align like a manager, and sell like an SDR, I thrive in complex B2B enviroment that requires heavy cross-functional collaborations.
 author:

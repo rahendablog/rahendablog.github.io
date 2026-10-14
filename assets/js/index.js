@@ -20,6 +20,55 @@
             $("body").toggleClass("nav-opened nav-closed");
         });
 
+        $(".rotating-subtitle").each(function () {
+            var $el = $(this),
+                phrases = $el.data("phrases");
+
+            if (!phrases || phrases.length < 2) {
+                return;
+            }
+
+            var index = 0,
+                charIndex = 0,
+                deleting = false,
+                pauseAtFull = parseInt($el.data("interval"), 10) || 3000,
+                pauseAtEmpty = 500,
+                typeSpeed = 60,
+                deleteSpeed = 30;
+
+            $el.text("").addClass("is-visible");
+
+            function tick() {
+                var word = phrases[index];
+
+                if (!deleting) {
+                    charIndex += 1;
+                    $el.text(word.substring(0, charIndex));
+
+                    if (charIndex < word.length) {
+                        setTimeout(tick, typeSpeed);
+                    } else {
+                        deleting = true;
+                        setTimeout(tick, pauseAtFull);
+                    }
+                    return;
+                }
+
+                charIndex -= 1;
+                $el.text(word.substring(0, charIndex));
+
+                if (charIndex > 0) {
+                    setTimeout(tick, deleteSpeed);
+                } else {
+                    deleting = false;
+                    index = (index + 1) % phrases.length;
+                    setTimeout(tick, pauseAtEmpty);
+                }
+            }
+
+            tick();
+        });
+
     });
 
     // Arctic Scroll by Paul Adam Davis

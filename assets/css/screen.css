@@ -1014,6 +1014,26 @@ body.nav-opened .nav {
     text-shadow: none;
 }
 
+/* Rotating subtitle line (types/deletes phrases defined in _config.yml) */
+.rotating-subtitle {
+    display: inline-block;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+.rotating-subtitle.is-visible {
+    opacity: 1;
+}
+.rotating-subtitle::after {
+    content: "|";
+    margin-left: 2px;
+    animation: rotating-subtitle-cursor 0.8s step-end infinite;
+}
+
+@keyframes rotating-subtitle-cursor {
+    0%, 50% { opacity: 1; }
+    50.01%, 100% { opacity: 0; }
+}
+
 /* Call-to-action button under the home page subtitle */
 .header-button {
     display: inline-block;
