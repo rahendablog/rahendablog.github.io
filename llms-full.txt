@@ -1,0 +1,37 @@
+---
+layout: null
+permalink: /llms-full.txt
+---
+# {{ site.name }} — full text
+
+> Complete text of every published page and post on {{ site.url }}, gathered
+> into one file for AI assistants and retrieval systems that prefer a single
+> fetch over crawling HTML. The structured index, with profile and site map,
+> lives at {{ "/llms.txt" | absolute_url }}
+
+Generated at build time from the site's own source, so it cannot drift from the
+published pages. Markup is stripped: headings appear as plain lines, and links
+are dropped — see the HTML page listed with each document for formatting,
+anchors and references.
+
+{% for p in site.pages %}{% if p.permalink == "about.html" %}
+---
+
+# About
+
+- URL: {{ p.url | absolute_url }}
+{% if p.description %}- Summary: {{ p.description }}{% endif %}
+
+{{ p.content | split: "<footer" | first | strip_html | replace: "&lt;", "<" | replace: "&gt;", ">" | replace: "&quot;", '"' | replace: "&#39;", "'" | replace: "&amp;", "&" | strip }}
+{% endif %}{% endfor %}
+{% for post in site.posts %}{% unless post.link or post.unlisted %}
+---
+
+# {{ post.title }}
+
+- URL: {{ post.url | absolute_url }}
+- Published: {{ post.date | date: "%Y-%m-%d" }}
+{% if post.description %}- Summary: {{ post.description }}{% endif %}
+
+{{ post.content | strip_html | replace: "&lt;", "<" | replace: "&gt;", ">" | replace: "&quot;", '"' | replace: "&#39;", "'" | replace: "&amp;", "&" | strip }}
+{% endunless %}{% endfor %}

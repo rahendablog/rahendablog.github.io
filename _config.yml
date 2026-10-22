@@ -1,0 +1,171 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely edit after that. If you find
+# yourself editing this file very often, consider using Jekyll's data files
+# feature for the data you need to update frequently.
+#
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
+#
+# If you need help with YAML syntax, here are some quick references for you:
+# https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/#yaml
+# https://learnxinyminutes.com/docs/yaml/
+#
+
+# Some configuration settings cannot be changed for GitHub Pages sites.
+#
+#   https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/about-github-pages-and-jekyll#configuring-jekyll-in-your-github-pages-site
+#
+
+# Site settings
+# These are used to personalize your new site. If you look in the HTML files,
+# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
+# You can create any custom variable you would like, and they will be accessible
+# in the templates via {{ site.myvariable }}.
+# github:
+# - metadata
+
+locale: fr
+title_separator:     #default [" | "]
+url: https://rahendarosmedi.com     #See baseurl - On Github Pages you may leave it blank - If you use CNAME use your domain
+baseurl: "/"     #Must end with "/" (theme builds links as {{ site.baseurl }}path). On Github Pages user sites use "/". Have a look to: https://byparker.com/blog/2014/clearing-up-confusion-around-baseurl/
+words_per_minute:     #default[200]
+timezone:     #"Europe/Madrid ,see https://jekyllrb.com/docs/configuration/options/ and https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+short_url: 'rahendarosmedi.com'
+
+title: &site_title "Rahenda"
+name: *site_title
+subtitle:
+  - "Product Manager"
+subtitle_rotating:
+  - "#Cloud - #API - #DevSecOps"
+  - "Engineering → Management → Business"
+description: >- # this means to ignore newlines until "baseurl:"
+  Build like an engineer, align like a manager, and sell like an SDR, I thrive in complex B2B enviroment that requires heavy cross-functional collaborations.
+author:
+  name: Rahenda
+  avatar: https://github.com/biloute00.png
+  location: Rennes, FR
+  links:
+  - url: https://github.com/rahendatri
+    icon: "fab fa-github"
+    label: "View on Github"
+  - url: https://github.com/biloute00
+    icon: "fab fa-github"
+    label: "View on Github"
+  - url: https://gitlab.com/rahendatri
+    icon: "fab fa-gitlab"
+    label: "View on Gitlab"
+  - url: https://linkedin.com/in/rahendarosmedi
+    icon: "fab fa-linkedin"
+    label: "View on LinkedIn"
+
+# Build settings
+
+# Some plugins are installed by default for GitHub Pages sites.
+#
+#   https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/about-github-pages-and-jekyll#plugins
+#
+plugins:
+- jekyll-feed
+- liquid_reading_time
+- jekyll-github-metadata
+- jekyll-sitemap
+- jekyll-paginate-v2
+- jekyll-auto-authors
+# - jekyll-remote-theme
+
+# jekyll-feed settings
+feed:
+  path: common/feed.xml
+
+# jekyll-paginate settings (legacy v1 key removed entirely; must be absent, not just falsy,
+# to coexist with jekyll-paginate-v2 below — jekyll-paginate-v2 only checks site.config["paginate"].nil?)
+
+# jekyll-paginate-v2 settings (required for jekyll-auto-authors)
+pagination:
+  enabled: true
+
+# jekyll-auto-authors settings
+autopages:
+  enabled: true
+  tags:
+    enabled: false
+  categories:
+    enabled: false
+  collections:
+    enabled: false
+  authors:
+    enabled: true
+    data: "_data/authors.yml"
+    layouts:
+      - "author-page.html"
+    permalink: "/author/:author/"
+    title: "Posts by :author"
+    exclude: []
+    slugify:
+      mode: none
+      cased: false
+
+# Include from processing (folders with "_" prefix are ignored, but some are included by default).
+# include:
+# - _common/
+
+# Exclude from processing.
+# The following items will not be processed, by default.
+# Any item listed under the `exclude:` key here will be automatically added to
+# the internal "default list".
+#
+# Excluded items can be processed by explicitly listing the directories or
+# their entries' file path in the `include:` list.
+#
+exclude:
+- .sass-cache/
+- .jekyll-cache/
+- gemfiles/
+- Gemfile
+- Gemfile.lock
+- node_modules/
+- LICENSE
+- README.md
+- vendor/bundle/
+- vendor/cache/
+- vendor/gems/
+- vendor/ruby/
+- changelog.md
+- "*.Rmd"
+- .travis.yml
+- .git
+
+
+# # HTML Compression
+# # - https://jch.penibelst.de/
+# compress_html:
+#   clippings: all
+#   blanklines: true
+
+
+# Defaults https://jekyllrb.com/docs/configuration/front-matter-defaults/
+defaults:
+- scope:
+    path: ""
+  values:
+    layout: "default"
+    header_type: "base"
+    include_on_search: false
+    cloudcategory_url: "/categories" #This is where the link on categories would redirect
+- scope:
+    path: ""
+    type: "posts"
+  values:
+    header_type: "post"
+    include_on_search: true
+    include_on_feed: true
+    show_date: true
+    show_bottomnavs: true
+    show_sociallinks: true
+    show_categories: true
+    show_author: true
+    permalink: /:slug.html
+    author: rahenda

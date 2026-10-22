@@ -1,0 +1,11 @@
+_site
+.sass-cache
+.jekyll-cache
+.jekyll-metadata
+vendor
+Gemfile.lock
+.claude
+.tmp
+.debug*
+_posts/analysis.md
+_TODO.md

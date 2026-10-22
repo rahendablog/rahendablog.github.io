@@ -1,0 +1,18 @@
+{% if paginator.total_pages > 1 %}
+<nav class="pagination" role="pagination">
+    {% if paginator.previous_page %}
+        {% if paginator.previous_page == 1 %}
+            {% capture ap_prev %}author/{{ page.author }}{% endcapture %}
+            <a class="newer-posts" href="{{ ap_prev | relative_url }}" title="Previous Page">&laquo; Newer Posts</a>
+        {% else %}
+            {% capture ap_prev2 %}author/{{ page.author }}/page{{ paginator.previous_page }}/{% endcapture %}
+            <a class="newer-posts" href="{{ ap_prev2 | relative_url }}" title="Previous Page">&laquo; Newer Posts</a>
+      {% endif %}
+    {% endif %}
+    <span class="page-number"> Page {{ paginator.page }} of {{ paginator.total_pages }} </span>
+    {% if paginator.next_page %}
+        {% capture ap_next %}author/{{ page.author }}/page{{ paginator.next_page }}/{% endcapture %}
+        <a class="older-posts" href="{{ ap_next | relative_url }}" title="Next Page">Older Posts &raquo;</a>
+    {% endif %}
+</nav>
+{% endif %}
