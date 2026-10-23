@@ -32,4 +32,5 @@ Allow: /
 User-agent: Bingbot
 Allow: /
 
+Host: {{ site.url }}
 Sitemap: {{ "/sitemap.xml" | absolute_url }}

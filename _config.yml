@@ -27,6 +27,7 @@
 # - metadata
 
 locale: fr
+lang: en     # default <html lang> and schema.org inLanguage; per-page override: lang: fr
 title_separator:     #default [" | "]
 url: https://rahendarosmedi.com     #See baseurl - On Github Pages you may leave it blank - If you use CNAME use your domain
 baseurl: "/"     #Must end with "/" (theme builds links as {{ site.baseurl }}path). On Github Pages user sites use "/". Have a look to: https://byparker.com/blog/2014/clearing-up-confusion-around-baseurl/

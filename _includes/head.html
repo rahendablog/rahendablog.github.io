@@ -1,10 +1,19 @@
     {% if page.cover %}{% assign page_image = page.cover %}{% else %}{% assign page_image = "assets/images/cover1.jpg" %}{% endif %}
     {% if page.description %}{% assign page_description = page.description %}{% else %}{% assign page_description = site.description %}{% endif %}
     {% assign page_description = page_description | strip_html | normalize_whitespace %}
+    {%- assign page_lang = page.lang | default: site.lang | default: "en" -%}
     <link rel="canonical" href="{{ page.url | absolute_url }}" />
     <meta name="description" content="{{ page_description | escape }}" />
     <meta name="referrer" content="origin" />
-    <link rel="next" href="{{ "page2/" | relative_url }}" />
+    {%- comment -%} Pagination hints, only when the paginator actually has those pages. {%- endcomment -%}
+    {%- if paginator.previous_page %}{% if paginator.previous_page == 1 %}
+    <link rel="prev" href="{{ "/" | relative_url }}" />
+    {%- else %}{% capture pp_prev %}page{{ paginator.previous_page }}/{% endcapture %}
+    <link rel="prev" href="{{ pp_prev | relative_url }}" />
+    {%- endif %}{% endif %}
+    {%- if paginator.next_page %}{% capture pp_next %}page{{ paginator.next_page }}/{% endcapture %}
+    <link rel="next" href="{{ pp_next | relative_url }}" />
+    {%- endif %}
 
     <meta property="og:site_name" content="{{ site.name }}" />
     <meta property="og:type" content="website" />
@@ -19,61 +28,100 @@
     <meta name="twitter:url" content="{{ page.url | absolute_url }}" />
     <meta name="twitter:image:src" content="{{ page_image | relative_url }}" />
 
-    {% if page.layout == "post" %}
-    {% assign post_author = site.data.authors[page.author] %}
+    {%- comment -%}
+      One JSON-LD @graph per page. The Person, the WebSite, this WebPage and its
+      primary image are each declared once, with a fragment @id, and referenced
+      by @id from everywhere else; posts add a BlogPosting node. jobTitle is the
+      subtitle plus the first rotating subtitle only, with the hashtags stripped
+      — schema.org wants a plain job title, not site chrome.
+    {%- endcomment -%}
+    {%- assign job_focus = site.subtitle_rotating | first | remove: "#" -%}
+    {%- assign job_title = site.subtitle | join: " " | append: " " | append: job_focus | strip_html | normalize_whitespace | strip -%}
+    {%- assign site_description = site.description | strip_html | normalize_whitespace -%}
+    {%- assign page_name = page.title | default: site.name -%}
+    {%- assign person_id = site.url | append: "/#person" -%}
+    {%- assign website_id = site.url | append: "/#website" -%}
+    {%- assign page_id = page.url | absolute_url | append: "#webpage" -%}
+    {%- assign article_id = page.url | absolute_url | append: "#article" -%}
+    {%- assign image_id = page.url | absolute_url | append: "#primaryimage" -%}
+    {%- comment -%} Dimensions of the default cover; any other cover declares its own. {%- endcomment -%}
+    {%- if page_image == "assets/images/cover1.jpg" %}{% assign image_width = 5684 %}{% assign image_height = 3910 %}{% else %}{% assign image_width = page.cover_width %}{% assign image_height = page.cover_height %}{% endif -%}
+    {%- assign post_author = site.data.authors[page.author] -%}
     <script type="application/ld+json">
 {
     "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    "headline": "{{ page.title | strip_html | strip_newlines }}",
-    "url": "{{ page.url | absolute_url }}",
-    "image": "{{ page_image | absolute_url }}",
-    "description": {{ page_description | jsonify }},
-    "datePublished": "{{ page.date | date_to_xmlschema }}",
-    "dateModified": "{{ page.last_modified_at | default: page.date | date_to_xmlschema }}",
-    "author": {
-        "@type": "Person",
-        "name": "{% if post_author %}{{ post_author.name }}{% else %}{{ site.author.name }}{% endif %}"{% if post_author.url %},
-        "url": "{{ post_author.url }}"{% endif %}
-    },
-    "publisher": {
-        "@type": "Organization",
-        "name": "{{ site.name }}"
-    },
-    "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "{{ page.url | absolute_url }}"
-    }
-}
-    </script>
-    {% else %}
-    <script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "publisher": "{{ site.name }}",
-    "name": "{% if page.title %}{{ page.title }}{% else %}{{ site.name }}{% endif %}",
-    "url": "{{ page.url | absolute_url }}",
-    "image": "{{ page_image | relative_url }}",
-    "description": {{ page_description | jsonify }}
-}
-    </script>
-    {% endif %}
-
-    <script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "{{ site.author.name }}",
-    "jobTitle": "{{ site.subtitle | concat: site.subtitle_rotating | join: ' ' | strip_html | strip_newlines }}",
-    "description": "{{ site.description | strip_html | strip_newlines }}",
-    "url": "{{ site.url }}",
-    "image": "{{ site.author.avatar }}",
-    "homeLocation": "{{ site.author.location }}",
-    "sameAs": [
-        {%- for author_link in site.author.links -%}
-        "{{ author_link.url }}"{% unless forloop.last %},{% endunless %}
-        {%- endfor -%}
+    "@graph": [
+        {
+            "@type": "Person",
+            "@id": {{ person_id | jsonify }},
+            "name": {{ site.author.name | jsonify }},
+            "jobTitle": {{ job_title | jsonify }},
+            "description": {{ site_description | jsonify }},
+            "url": "{{ site.url }}/",
+            "image": {
+                "@type": "ImageObject",
+                "url": {{ site.author.avatar | jsonify }}
+            },
+            "homeLocation": {
+                "@type": "Place",
+                "name": {{ site.author.location | jsonify }}
+            },
+            "sameAs": [{% for author_link in site.author.links %}
+                {{ author_link.url | jsonify }}{% unless forloop.last %},{% endunless %}{% endfor %}
+            ]
+        },
+        {
+            "@type": "WebSite",
+            "@id": {{ website_id | jsonify }},
+            "url": "{{ site.url }}/",
+            "name": {{ site.name | jsonify }},
+            "description": {{ site_description | jsonify }},
+            "inLanguage": {{ page_lang | jsonify }},
+            "publisher": { "@id": {{ person_id | jsonify }} }
+        },
+        {
+            "@type": "WebPage",
+            "@id": {{ page_id | jsonify }},
+            "url": {{ page.url | absolute_url | jsonify }},
+            "name": {{ page_name | jsonify }},
+            "description": {{ page_description | jsonify }},
+            "inLanguage": {{ page_lang | jsonify }},
+            "isPartOf": { "@id": {{ website_id | jsonify }} },
+            "about": { "@id": {{ person_id | jsonify }} },
+            "primaryImageOfPage": { "@id": {{ image_id | jsonify }} }{% if page.layout == "post" %},
+            "mainEntity": { "@id": {{ article_id | jsonify }} }{% endif %}
+        },
+        {
+            "@type": "ImageObject",
+            "@id": {{ image_id | jsonify }},
+            "url": {{ page_image | absolute_url | jsonify }}{% if image_width and image_height %},
+            "width": {{ image_width }},
+            "height": {{ image_height }}{% endif %}
+        }{% if page.layout == "post" %},
+        {
+            "@type": "BlogPosting",
+            "@id": {{ article_id | jsonify }},
+            "headline": {{ page.title | strip_html | normalize_whitespace | jsonify }},
+            "description": {{ page_description | jsonify }},
+            "url": {{ page.url | absolute_url | jsonify }},
+            "datePublished": "{{ page.date | date_to_xmlschema }}",
+            "dateModified": "{{ page.last_modified_at | default: page.date | date_to_xmlschema }}",
+            "inLanguage": {{ page_lang | jsonify }},
+            "image": { "@id": {{ image_id | jsonify }} },
+            "isPartOf": { "@id": {{ website_id | jsonify }} },
+            "mainEntityOfPage": { "@id": {{ page_id | jsonify }} },
+            "publisher": { "@id": {{ person_id | jsonify }} },
+            {%- if post_author and post_author.name != site.author.name %}
+            "author": {
+                "@type": "Person",
+                "name": {{ post_author.name | jsonify }}{% if post_author.url_full %},
+                "url": {{ post_author.url_full | jsonify }}{% endif %}{% if post_author.bio %},
+                "description": {{ post_author.bio | jsonify }}{% endif %}
+            }
+            {%- else %}
+            "author": { "@id": {{ person_id | jsonify }} }
+            {%- endif %}
+        }{% endif %}
     ]
 }
     </script>

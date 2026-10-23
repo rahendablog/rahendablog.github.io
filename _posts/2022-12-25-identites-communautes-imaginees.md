@@ -2,6 +2,7 @@
 layout: post
 navigation: True
 title: Identités et Communautés Imaginées
+lang: fr
 date: 2022-12-25 23:59:00
 description: >-
   Récit et regard sur l'identité imaginaire : l'Indonésie comme communauté
