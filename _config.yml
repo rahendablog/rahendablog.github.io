@@ -26,13 +26,13 @@
 # github:
 # - metadata
 
-locale: fr
-lang: en     # default <html lang> and schema.org inLanguage; per-page override: lang: fr
+locale: 'fr'
+lang: 'en'     # default <html lang> and schema.org inLanguage; per-page override: lang: fr
 title_separator:     #default [" | "]
-url: https://rahendarosmedi.com     #See baseurl - On Github Pages you may leave it blank - If you use CNAME use your domain
-baseurl: "/"     #Must end with "/" (theme builds links as {{ site.baseurl }}path). On Github Pages user sites use "/". Have a look to: https://byparker.com/blog/2014/clearing-up-confusion-around-baseurl/
+url: 'https://rahendarosmedi.com'     #See baseurl - On Github Pages you may leave it blank - If you use CNAME use your domain
+baseurl: '/'     #Must end with "/" (theme builds links as {{ site.baseurl }}path). On Github Pages user sites use "/". Have a look to: https://byparker.com/blog/2014/clearing-up-confusion-around-baseurl/
 words_per_minute:     #default[200]
-timezone:     #"Europe/Madrid ,see https://jekyllrb.com/docs/configuration/options/ and https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+timezone: 'Europe/Madrid'     #"Europe/Madrid ,see https://jekyllrb.com/docs/configuration/options/ and https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 short_url: 'rahendarosmedi.com'
 
 title: &site_title "Rahenda"
