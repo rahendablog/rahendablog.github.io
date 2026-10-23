@@ -23,6 +23,9 @@ permalink: 404.html
 
     <link rel="stylesheet" type='text/css' href='//fonts.googleapis.com/css?family=Open+Sans:400,300,700'>
     <link rel="stylesheet" href="{{ "assets/css/ghost.min.css" | relative_url }}" />
+
+    <link rel="alternate" type="text/plain" title="{{ site.name }} — site index for AI assistants (llms.txt)" href="{{ "/llms.txt" | relative_url }}" />
+    <link rel="alternate" type="text/plain" title="{{ site.name }} — full text of all pages" href="{{ "/llms-full.txt" | relative_url }}" />
 </head>
 <body>
     <main role="main" id="main">
@@ -39,6 +42,7 @@ permalink: 404.html
                                 <h1 class="error-code">404</h1>
                                 <h2 class="error-description">Page not found</h2>
                                 <a class="error-link" href="{{ "/" | relative_url }}">Go to the front page →</a>
+                                <a class="error-link" href="{{ "/llms.txt" | relative_url }}" rel="alternate" type="text/plain">llms.txt — site index for AI assistants</a>
                             </section>
                         </section>
                     </section>

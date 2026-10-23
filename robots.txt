@@ -2,6 +2,9 @@
 layout: null
 permalink: /robots.txt
 ---
+# llms.txt (site index for AI assistants): {{ "/llms.txt" | absolute_url }}
+# llms-full.txt (full text of every page, single fetch): {{ "/llms-full.txt" | absolute_url }}
+
 User-agent: *
 Allow: /
 
