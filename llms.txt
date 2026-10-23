@@ -21,7 +21,7 @@ heavy cross-functional collaboration.
 
 ## Background
 
-- **Current role**: product and business lead for Network API products at
+- **Current role**: product and business for Network API products at
   Orange (since October 2024) — product strategy and positioning for
   developer-facing APIs, plus go-to-market on the finance, KYC, and fraud
   prevention verticals for enterprise customers.
@@ -52,12 +52,19 @@ heavy cross-functional collaboration.
 
 ## Speaking and Recognition
 
+- First scientific paper, written at 15 (2010): co-wrote "Peran Mikroorganisme
+  Lokal (MOL) Legen dalam Pertanian Organik" (the role of local microorganisms
+  from legen palm sap in organic farming) and competed in the 42nd Lomba Karya
+  Ilmiah Remaja (LKIR), the national youth scientific paper competition run by
+  the Indonesian Institute of Sciences (LIPI); entered from SMP Al-Hikmah
+  Surabaya and verified for judging among 661 entries nationwide
+  ([participant list](https://kadry-tekno.blogspot.com/2011/06/daftar-lomba-karya-ilmiah-remaja-ke-42.html)).
 - Speaker, Network X Paris (2023): product deployment under VUCA conditions.
 - Jury member, Match Maker Ventures (2023): evaluated 6 start-up pitches.
 - Interviewed by Le Télégramme (2023) on the connectivity challenges behind the
   2024 Olympics broadcast.
-- Vice-president, Indonesian Professionals Association (InPA France): leads partnerships with
-  companies and embassies.
+- Vice-president, Indonesian Professionals Association (InPA France): leads
+  partnerships with companies and embassies.
 
 ## Profile
 
