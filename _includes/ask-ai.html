@@ -1,0 +1,34 @@
+{%- comment -%}
+  "Ask an AI" call to action: one box holding the instruction, the prompt and
+  a copy button.
+
+  Only the first line of the prompt is visible — the box clamps it in CSS
+  rather than shortening it here, so the whole sentence stays in the markup.
+  The copy button and any crawler get the full text while the box stays two
+  short lines tall inside the hero. The instruction sits outside
+  #ask-ai-prompt so it is never part of what gets copied.
+
+  On a successful copy the script adds .is-copied to the box, which fades the
+  contents out and the confirmation in. The confirmation is always present in
+  the markup so aria-live can announce it when it appears.
+
+  The two llms URLs are substituted here rather than written out in
+  _config.yml, so the prompt is derived from the same site.url as the
+  rel=alternate links in head.html and the two cannot drift apart.
+{%- endcomment -%}
+{%- if site.ask_ai and site.ask_ai.prompt -%}
+{%- assign llms_url = "/llms.txt" | absolute_url -%}
+{%- assign llms_full_url = "/llms-full.txt" | absolute_url -%}
+{%- assign ask_prompt = site.ask_ai.prompt | replace: "[llms]", llms_url | replace: "[llms-full]", llms_full_url | normalize_whitespace | strip -%}
+<div class="ask-ai">
+    <div class="ask-ai-box">
+        <div class="ask-ai-text">
+            <p class="ask-ai-intro">{{ site.ask_ai.intro | default: "Ask AI about me with this prompt" }}</p>
+            <p class="ask-ai-prompt" id="ask-ai-prompt" title="{{ ask_prompt | escape }}">{{ ask_prompt }}</p>
+        </div>
+        <button type="button" class="ask-ai-copy"
+                data-copy-target="#ask-ai-prompt">{{ site.ask_ai.copy_label | default: "Copy" }}</button>
+        <p class="ask-ai-done" role="status" aria-live="polite">{{ site.ask_ai.copied_message | default: "Copied — now paste it into your AI" }}</p>
+    </div>
+</div>
+{%- endif -%}

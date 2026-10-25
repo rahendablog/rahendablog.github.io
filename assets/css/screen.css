@@ -16,9 +16,10 @@
     9.  Pagination
     10. Subscribe
     11. Footer
-    12. Media Queries (Tablet)
-    13. Media Queries (Mobile)
-    14. Animations
+    12. Ask an AI
+    13. Media Queries (Tablet)
+    14. Media Queries (Mobile)
+    15. Animations
 
 */
 
@@ -1896,7 +1897,200 @@ body.page-template .post-title {
 
 
 /* ==========================================================================
-   12. Media Queries - Smaller than 900px
+   12. Ask an AI - Copy-paste prompt for the visitor's own assistant
+   ========================================================================== */
+
+/* One box holding the instruction, the prompt and the copy button. It sits
+   over the cover photo, so it borrows the header's white-on-dark scheme. */
+.ask-ai {
+    margin-top: 1.8rem;
+}
+
+.ask-ai-box {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    position: relative;
+    overflow: hidden;
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 6px 6px 6px 12px;
+    text-align: left;
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 12px;
+    background: rgba(0,0,0,0.6);
+}
+
+/* The instruction and the prompt stack in one column, so the two read as a
+   single control rather than a caption floating above a box. */
+.ask-ai-text {
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    min-width: 0;
+}
+
+.ask-ai-intro {
+    margin: 0;
+    font-family: "Open Sans", sans-serif;
+    font-size: 1.1rem;
+    line-height: 16px;
+    letter-spacing: 0.05rem;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+}
+
+/* Only the first line shows; the rest is clipped with an ellipsis.
+
+   This clamps a wrapping line rather than using white-space:nowrap, because
+   .vertical is a table-cell and an anonymous table sizes itself to its
+   min-content width — a nowrap sentence would stretch the whole header well
+   past a phone viewport, and min-width:0 does not reduce that contribution.
+   Letting the text wrap anywhere keeps min-content down to one character. */
+.ask-ai-prompt {
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    font-family: "Open Sans", sans-serif;
+    font-size: 1.4rem;
+    line-height: 24px;
+    color: #fff;
+}
+
+.ask-ai-copy {
+    -ms-flex: none;
+        flex: none;
+    margin-left: 10px;
+    padding: 0 14px;
+    height: 28px;
+    line-height: 26px;
+    font-family: "Open Sans", sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.05rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    color: #222;
+    background: #fff;
+    border: 1px solid #fff;
+    /* Nested radius: the button sits 6px inside the box, so 12 - 6 keeps the
+       two curves concentric instead of pinching the inner corner. */
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.ask-ai-copy:hover,
+.ask-ai-copy:focus {
+    color: #fff;
+    background: transparent;
+}
+
+/* After a copy the box swaps its contents for a confirmation. The originals
+   keep their place in the flow at opacity 0, so the box never changes height,
+   and the message is absolutely positioned over them. */
+.ask-ai-text,
+.ask-ai-copy {
+    transition: opacity 0.25s ease, -webkit-transform 0.25s ease;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.ask-ai-box.is-copied .ask-ai-text,
+.ask-ai-box.is-copied .ask-ai-copy {
+    opacity: 0;
+    -webkit-transform: translateY(-6px);
+            transform: translateY(-6px);
+    pointer-events: none;
+}
+
+.ask-ai-done {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    right: 12px;
+    margin: 0;
+    opacity: 0;
+    pointer-events: none;
+    -webkit-transform: translateY(-20%);
+            transform: translateY(-20%);
+    transition: opacity 0.25s ease 0.08s, -webkit-transform 0.25s ease 0.08s;
+    transition: opacity 0.25s ease 0.08s, transform 0.25s ease 0.08s;
+    font-family: "Open Sans", sans-serif;
+    font-size: 1.4rem;
+    line-height: 20px;
+    text-align: center;
+    color: #fff;
+}
+
+.ask-ai-box.is-copied .ask-ai-done {
+    opacity: 1;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+}
+
+/* Honour a reduced-motion preference: still swap, just without the slide. */
+@media (prefers-reduced-motion: reduce) {
+    .ask-ai-text,
+    .ask-ai-copy,
+    .ask-ai-done,
+    .ask-ai-box.is-copied .ask-ai-text,
+    .ask-ai-box.is-copied .ask-ai-copy {
+        -webkit-transform: none;
+                transform: none;
+        transition: opacity 0.15s ease;
+    }
+
+    .ask-ai-done {
+        -webkit-transform: translateY(-50%);
+                transform: translateY(-50%);
+    }
+}
+
+/* Fade in with the rest of the home page header. */
+.home-template .ask-ai {
+    -webkit-animation: fade-in-down 1.2s;
+    animation: fade-in-down 1.2s both;
+}
+
+/* Same fallback the header already uses when there is no cover image. */
+.no-cover .ask-ai-intro {
+    color: rgba(0,0,0,0.45);
+}
+
+.no-cover .ask-ai-box {
+    border-color: #EBF2F6;
+    background: #f5f8fa;
+}
+
+.no-cover .ask-ai-prompt {
+    color: rgba(0,0,0,0.7);
+}
+
+.no-cover .ask-ai-done {
+    color: rgba(0,0,0,0.75);
+}
+
+.no-cover .ask-ai-copy {
+    color: #fff;
+    background: #9EABB3;
+    border-color: #9EABB3;
+}
+
+.no-cover .ask-ai-copy:hover,
+.no-cover .ask-ai-copy:focus {
+    color: #555;
+    background: transparent;
+    border-color: #555;
+}
+
+
+/* ==========================================================================
+   13. Media Queries - Smaller than 900px
    ========================================================================== */
 
 @media only screen and (max-width: 900px) {
@@ -1935,6 +2129,17 @@ body.page-template .post-title {
     .page-description {
         font-size: 1.8rem;
         line-height: 1.5em;
+    }
+
+    /* Just above the 500px breakpoint the longest rotating phrase comes
+       within 7% of the available width; stepping it down keeps the margin
+       comfortable across the whole tablet range. */
+    .rotating-subtitle {
+        font-size: 1.6rem;
+    }
+
+    .ask-ai {
+        margin-top: 1.4rem;
     }
 
     .post {
@@ -2050,7 +2255,7 @@ body.page-template .post-title {
 
 
 /* ==========================================================================
-   13. Media Queries - Smaller than 500px
+   14. Media Queries - Smaller than 500px
    ========================================================================== */
 
 @media only screen and (max-width: 500px) {
@@ -2180,6 +2385,36 @@ body.page-template .post-title {
 
     .page-description {
         font-size: 1.6rem;
+    }
+
+    /* The longest rotating phrase wraps onto a second line at the inherited
+       size, which makes the header jump as it types. Two changes keep it on
+       one line: the header gets more of the screen than the shared 80%, and
+       the rotating line alone is shrunk. Measured at 375px, the phrase needs
+       350px at 13px against 300px of room; 92% widens that to 345px and 12px
+       brings the phrase down to 323px. */
+    .main-header .inner {
+        width: 92%;
+    }
+
+    .rotating-subtitle {
+        font-size: 1.2rem;
+    }
+
+    .ask-ai-box {
+        padding-left: 10px;
+    }
+
+    /* Keep the instruction well below the prompt: it is a caption and should
+       not outweigh what it introduces, and at this size it stays on one line. */
+    .ask-ai-intro {
+        font-size: 0.9rem;
+        letter-spacing: 0;
+        line-height: 13px;
+    }
+
+    .ask-ai-prompt {
+        font-size: 1.3rem;
     }
 
     h1, h2, h3,
@@ -2342,7 +2577,7 @@ body.page-template .post-title {
 
 
 /* ==========================================================================
-   14. Animations
+   15. Animations
    ========================================================================== */
 
 /* Used to fade in title/desc on the home page */

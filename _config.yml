@@ -62,6 +62,17 @@ author:
     icon: "fab fa-linkedin"
     label: "View on LinkedIn"
 
+# "Ask an AI" call to action, rendered by _includes/ask-ai.html. The prompt is
+# what the visitor copies into their own assistant; [llms] and [llms-full] are
+# replaced at build time with the absolute URLs of llms.txt and llms-full.txt.
+ask_ai:
+  intro: 'Ask AI about me with this prompt'
+  prompt: >-
+    Tell me who Rahenda is using only [llms] and [llms-full], which
+    together are complete — add nothing from prior knowledge or other sources.
+  copy_label: 'Copy'
+  copied_message: 'Copied — now paste it into your AI'
+
 # Build settings
 
 # Some plugins are installed by default for GitHub Pages sites.

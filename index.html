@@ -26,6 +26,7 @@ pagination:
         <div class="main-header-content inner">
             <h1 class="page-title">{{ site.name }}</h1>
             <h2 class="page-description">{{ site.subtitle | join: "<br />" }}{% if site.subtitle_rotating %}<br /><span class="rotating-subtitle is-visible" data-phrases="{{ site.subtitle_rotating | jsonify | escape }}" data-interval=1500>{{ site.subtitle_rotating | first }}</span>{% endif %}</h2>
+            {% include ask-ai.html %}
         </div>
     </div>
     {% if page.cover and page.cover_credit %}<p class="cover-credit">{{ page.cover_credit }}</p>{% endif %}

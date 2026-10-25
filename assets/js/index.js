@@ -69,6 +69,63 @@
             tick();
         });
 
+        // Copy button on the "Ask an AI" prompt. The text comes from the
+        // element the button points at, so the markup stays the single source
+        // and nothing is duplicated into a data attribute. On success the box
+        // swaps itself for the confirmation message it already contains.
+        $(".ask-ai-copy").on("click", function (e) {
+            e.preventDefault();
+
+            var $button = $(this),
+                $box = $button.closest(".ask-ai-box"),
+                $source = $($button.data("copy-target")),
+                text = $.trim($source.text());
+
+            if (!text) {
+                return;
+            }
+
+            // The box fades its contents out and the confirmation in; the
+            // CSS owns the animation, this only flips the class and puts it
+            // back a few seconds later.
+            function confirmCopy() {
+                $box.addClass("is-copied");
+                clearTimeout($box.data("reset-timer"));
+                $box.data("reset-timer", setTimeout(function () {
+                    $box.removeClass("is-copied");
+                }, 2800));
+            }
+
+            // execCommand is the fallback for browsers without the async
+            // clipboard API, and for any page not served over HTTPS, where
+            // navigator.clipboard is undefined.
+            function legacyCopy() {
+                var $scratch = $("<textarea/>")
+                    .css({position: "fixed", top: 0, left: "-9999px"})
+                    .val(text)
+                    .appendTo("body");
+
+                $scratch[0].select();
+
+                try {
+                    if (document.execCommand("copy")) {
+                        confirmCopy();
+                    }
+                } catch (err) {
+                    // Nothing else to try: the prompt is on the page and the
+                    // reader can still select it by hand.
+                }
+
+                $scratch.remove();
+            }
+
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).then(confirmCopy, legacyCopy);
+            } else {
+                legacyCopy();
+            }
+        });
+
     });
 
     // Arctic Scroll by Paul Adam Davis
