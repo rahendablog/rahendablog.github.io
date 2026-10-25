@@ -23,5 +23,5 @@ group :jekyll_plugins do
   gem "jekyll-paginate-v2"
   gem "jekyll-auto-authors"
   gem "jekyll-github-metadata"
-  gem "jekyll-geo-kit", github: "rahendatri/jekyll-geo-kit"
+  gem "jekyll-geo-kit"
 end
